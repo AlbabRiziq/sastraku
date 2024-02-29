@@ -10,12 +10,12 @@ Berikut adalah teknologi yang digunakan dalam pengembangan aplikasi ini:
 
 ### Frontend
 
-- **Next.js**:
-- **Tailwind CSS**:
+- **Next.js**
+- **Tailwind CSS**
 
 ### Backend
 
-- **PostgreSQL**:
+- **PostgreSQL**
 
 ## Kontributor
 
