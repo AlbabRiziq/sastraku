@@ -10,8 +10,8 @@ Berikut adalah teknologi yang digunakan dalam pengembangan aplikasi ini:
 
 ### Frontend
 
-- **Next.js**: Sebuah framework JavaScript yang memungkinkan fungsionalitas seperti server-side rendering dan generating static websites untuk aplikasi berbasis React.
-- **Tailwind CSS**: Sebuah utility-first CSS framework yang sangat customizable, yang memungkinkan kita untuk membangun desain custom tanpa meninggalkan HTML.
+- **Next.js**:
+- **Tailwind CSS**:
 
 ### Backend
 
