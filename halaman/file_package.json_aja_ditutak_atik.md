@@ -3,3 +3,4 @@ karo file package-lock.json
 terus tailwind.config.js
 
 #aja diedit
+oke
