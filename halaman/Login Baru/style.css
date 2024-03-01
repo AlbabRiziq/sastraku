@@ -1,21 +1,39 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+
+body {
+  font-family: Arial;
+  color: white;
 }
-html,body{
-  display: grid;
+
+.split {
   height: 100%;
-  width: 100%;
-  place-items: center;
-  background: -webkit-linear-gradient(left, #9EC8BA, #5C8374);
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
-::selection{
-  background: #9EC8BA;
-  color: #D9D9D9;
+.left {
+  left: 20px;
+  border-radius: ;
+  background-color: #9EC8BA;
 }
+
+.right {
+  right: 0;
+  background-color: #D9D9D9;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  color:#092635
+}
+
 .wrapper{
   overflow: hidden;
   max-width: 390px;
@@ -68,7 +86,7 @@ html,body{
   left: 0;
   z-index: 0;
   border-radius: 5px;
-  background: -webkit-linear-gradient(left, #9EC8BA, #5C8374);
+  background: -webkit-linear-gradient(left, #092635, #092635);
   transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
 input[type="radio"]{
@@ -78,7 +96,7 @@ input[type="radio"]{
   left: 50%;
 }
 #signup:checked ~ label.signup{
-  color: #fff;
+  color: #9EC8BA;
   cursor: default;
   user-select: none;
 }
@@ -91,6 +109,7 @@ input[type="radio"]{
 #login:checked ~ label.login{
   cursor: default;
   user-select: none;
+  color: #9EC8BA;
 }
 .wrapper .form-container{
   width: 100%;
@@ -115,7 +134,7 @@ input[type="radio"]{
   outline: none;
   padding-left: 15px;
   border-radius: 5px;
-  border: 1px solid lightgrey;
+  border: 1px solid #9EC8BA;
   border-bottom-width: 2px;
   font-size: 17px;
   transition: all 0.3s ease;
@@ -159,7 +178,7 @@ form .btn .btn-layer{
   width: 300%;
   position: absolute;
   left: -100%;
-  background: -webkit-linear-gradient(right, #9EC8B9, #9EC8BA, #9EC8B9, #9EC8BA);
+  background: -webkit-linear-gradient(right, #5C8374, #5C8374, #5C8374, #9EC8BA);
   border-radius: 5px;
   transition: all 0.4s ease;;
 }
@@ -179,4 +198,22 @@ form .btn input[type="submit"]{
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+html,body{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: -webkit-linear-gradient(left, #9EC8BA, #5C8374);
+}
+::selection{
+  background: #9EC8BA;
+  color: #9EC8BA;
 }
