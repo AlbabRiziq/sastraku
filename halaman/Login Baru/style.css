@@ -1,22 +1,38 @@
-/* @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap"); */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-}
-html,
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
 body {
-  display: grid;
+  font-family: Arial;
+  color: white;
+}
+
+.split {
   height: 100%;
-  width: 100%;
-  place-items: center;
-  background: -webkit-linear-gradient(left, #9ec8ba, #5c8374);
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
-::selection {
-  background: #9ec8ba;
-  color: #d9d9d9;
+.left {
+  left: 0px;
+  background-color: #9ec8ba;
 }
+
+.right {
+  right: 0px;
+  background-color: #d9d9d9;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  color: #092635;
+}
+
 .wrapper {
   overflow: hidden;
   max-width: 390px;
@@ -44,7 +60,7 @@ body {
   overflow: hidden;
   margin: 30px 0 10px 0;
   justify-content: space-between;
-  border: 1px solid lightgrey;
+  border: 1px solid #092635;
   border-radius: 5px;
 }
 .slide-controls .slide {
@@ -69,7 +85,7 @@ body {
   left: 0;
   z-index: 0;
   border-radius: 5px;
-  background: -webkit-linear-gradient(left, red, #5c8374);
+  background: -webkit-linear-gradient(left, #092635, #092635);
   transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 input[type="radio"] {
@@ -79,7 +95,7 @@ input[type="radio"] {
   left: 50%;
 }
 #signup:checked ~ label.signup {
-  color: #fff;
+  color: #9ec8ba;
   cursor: default;
   user-select: none;
 }
@@ -92,6 +108,7 @@ input[type="radio"] {
 #login:checked ~ label.login {
   cursor: default;
   user-select: none;
+  color: #9ec8ba;
 }
 .wrapper .form-container {
   width: 100%;
@@ -116,7 +133,7 @@ input[type="radio"] {
   outline: none;
   padding-left: 15px;
   border-radius: 5px;
-  border: 1px solid lightgrey;
+  border: 1px solid #9ec8ba;
   border-bottom-width: 2px;
   font-size: 17px;
   transition: all 0.3s ease;
@@ -162,9 +179,9 @@ form .btn .btn-layer {
   left: -100%;
   background: -webkit-linear-gradient(
     right,
-    #9ec8b9,
-    #9ec8ba,
-    #9ec8b9,
+    #5c8374,
+    #5c8374,
+    #5c8374,
     #9ec8ba
   );
   border-radius: 5px;
@@ -186,4 +203,23 @@ form .btn input[type="submit"] {
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+html,
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: -webkit-linear-gradient(left, #9ec8ba, right, #d9d9d9);
+}
+::selection {
+  background: #9ec8ba;
+  color: #9ec8ba;
 }

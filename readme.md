@@ -21,5 +21,5 @@ Berikut adalah teknologi yang digunakan dalam pengembangan aplikasi ini:
 
 - [RIZIQ LILI ULIL ALBAB](https://github.com/AlbabRiziq)
 - [NURI NAFISAH RAMADHANI](https://github.com/nurinafisah)
-- [SALUH JANNATU UZRI U.](https://github.com/saluhju)
+- [SALUH JANNATU U.](https://github.com/saluhju)
 - ASYIFATUL JANNAH
