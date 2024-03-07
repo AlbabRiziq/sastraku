@@ -12,24 +12,27 @@ body {
     overflow-x: hidden;
     padding-top: 20px;
   }
-  .left {
-    left: 0;
+  .page {
     background-color: #9EC8BA;
   }
   
-  .right {
-    right: 0;
-    background-color: ##D9D9D9;
-  }
-  
-  .centered {
+  .satu {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
   }
-  .centered img {
+
+  .dua {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .satu img {
     width: 150px;
-    border-radius: 50%;
+    border-radius: 10px;
   }
