@@ -2,32 +2,138 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply text-[white];
+  font-family: Arial;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.container {
+  @apply flex w-screen h-screen;
+}
+.left {
+  @apply flex justify-center items-center h-screen w-[50vw] bg-[#9ec8ba];
+}
+.right {
+  @apply justify-center flex items-center h-screen w-[50vw] bg-[#d9d9d9];
+}
+.centered {
+  @apply text-left text-[#092635] p-2.5;
+}
+@media only screen and (max-width: 780px) {
+  .left {
+    @apply hidden;
   }
+  .right {
+    @apply w-screen;
+  }
+}
+.wrapper {
+  @apply overflow-hidden max-w-[390px] shadow-[0px_15px_20px_rgba(0,0,0,0.1)] p-[30px] rounded-[5px];
+  background: #d9d9d9;
+}
+.wrapper .title-text {
+  @apply flex w-[200%] text-[#072732];
+}
+.wrapper .title {
+  @apply w-6/12 text-[35px] font-semibold text-center transition-all duration-[0.6s] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)];
+}
+.wrapper .slide-controls {
+  @apply relative flex h-[50px] w-full overflow-hidden justify-between border mt-[30px] mb-2.5 mx-0 rounded-[5px] border-solid border-[#092635];
+}
+.slide-controls .slide {
+  @apply h-full w-full text-white text-lg font-medium text-center leading-[48px] cursor-pointer z-[1] transition-all duration-[0.6s] ease-[ease];
+}
+.slide-controls label.signup {
+  @apply text-black;
+}
+.slide-controls .slider-tab {
+  @apply absolute h-full w-6/12 z-0 transition-all duration-[0.6s] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] rounded-[5px] left-0;
+  background: -webkit-linear-gradient(left, #072732, #072732);
+}
+input[type="radio"] {
+  @apply hidden;
+}
+#signup:checked ~ .slider-tab {
+  @apply left-2/4;
+}
+#signup:checked ~ label.signup {
+  @apply text-[#9ec8b9] cursor-default select-none;
+}
+#signup:checked ~ label.login {
+  @apply text-[#072732];
+}
+#login:checked ~ label.signup {
+  @apply text-[#072732];
+}
+#login:checked ~ label.login {
+  @apply cursor-default select-none text-[#9ec8b9];
+}
+.wrapper .form-container {
+  @apply w-full overflow-hidden;
+}
+.form-container .form-inner {
+  @apply flex w-[200%];
+}
+.form-container .form-inner form {
+  @apply w-6/12 transition-all duration-[0.6s] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)];
+}
+.form-inner form .field {
+  @apply h-[50px] w-full mt-5;
+}
+.form-inner form .field input {
+  @apply h-full w-full border text-[17px] transition-all duration-[0.3s] ease-[ease] pl-[15px] rounded-[5px] border-b-2 border-solid border-[#9ec8ba] focus:border-[#1b4242];
+  outline: none;
+}
+.form-inner form .field input::placeholder {
+  @apply text-[#999] transition-all duration-[0.3s] ease-[ease];
+}
+form .field input:focus::placeholder {
+  @apply text-[#b3b3b3];
+}
+.form-inner form .pass-link {
+  @apply mt-[5px];
+}
+.form-inner form .signup-link {
+  @apply text-center text-[#072732] mt-[30px];
+}
+.form-inner form .pass-link a,
+.form-inner form .signup-link a {
+  @apply text-[#1b4242] font-[bold] no-underline;
+}
+.form-inner form .pass-link a:hover,
+.form-inner form .signup-link a:hover {
+  @apply underline;
+}
+form .btn {
+  @apply h-[50px] w-full relative overflow-hidden rounded-[5px];
+}
+form .btn .btn-layer {
+  @apply h-full w-[300%] absolute transition-all duration-[0.4s] ease-[ease] rounded-[5px] -left-full;
+  background: -webkit-linear-gradient(
+    right,
+    #9ec8b9,
+    #9ec8ba,
+    #9ec8b9,
+    #9ec8ba
+  );
+}
+form .btn:hover .btn-layer {
+  @apply left-0;
+}
+form .btn input[type="submit"] {
+  @apply h-full w-full z-[1] relative text-white text-xl font-medium cursor-pointer pl-0 rounded-[5px] border-[none];
+  background: none;
+}
+* {
+  @apply box-border m-0 p-0;
+  font-family: "Montserrat", sans-serif;
+}
+html,
+body {
+  @apply grid h-full w-full place-items-center;
+  background: -webkit-linear-gradient(left, #9ec8ba, right, #d9d9d9);
+}
+::selection {
+  @apply text-[#9ec8ba];
+  background: #9ec8ba;
 }
