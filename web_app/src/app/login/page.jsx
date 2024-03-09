@@ -1,6 +1,5 @@
-// "use client";
-
 import "./login.css";
+
 function login() {
   return (
     <main>

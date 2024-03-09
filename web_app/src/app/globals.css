@@ -1,7 +1,7 @@
 @tailwind base;
-@tailwind components;
+/* @tailwind components; */
 @tailwind utilities;
-
+/* 
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 body {
   @apply text-[white];
@@ -136,4 +136,4 @@ body {
 ::selection {
   @apply text-[#9ec8ba];
   background: #9ec8ba;
-}
+} */
