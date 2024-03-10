@@ -4,7 +4,7 @@
 
 <center>
 <img src="./logo.png" height=300></center>
-Sastraku adalah aplikasi di mana pengguna dapat saling berbagi karya sastra seperti puisi, pantun, dan karya sastra lainnya.
+Sastraku adalah aplikasi dimana pengguna dapat saling berbagi karya sastra seperti puisi, pantun, dan karya sastra lainnya.
 
 ## Tech Stack
 
