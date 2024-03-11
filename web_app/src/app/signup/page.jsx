@@ -1,10 +1,9 @@
 "use client";
 
-import "./login.css";
-
+import "./signup.css";
 import Link from "next/link";
 
-function login() {
+function SignUp() {
   return (
     <main>
       <div className="container">
@@ -29,11 +28,8 @@ function login() {
             </div>
             <div className="form-container">
               <div className="slide-controls">
-                {/* <input type="radio" name="slide" id="login" defaultChecked="" />
-                <Link href="/signup" id="login">
-                  Home
-                </Link>
-                <input type="radio" name="slide" id="signup" /> */}
+                {/* <input type="radio" name="slide" id="login" />
+                <input type="radio" name="slide" id="signup" defaultChecked /> */}
                 <label htmlFor="login" className="slide login">
                   <a href="/login">
                     <strong>LOGIN</strong>
@@ -47,22 +43,26 @@ function login() {
                 <div className="slider-tab" />
               </div>
               <div className="form-inner">
-                <form action="#" className="login">
+                <form action="#" className="signup">
+                  <div className="field">
+                    <input type="text" placeholder="Nama Lengkap" required="" />
+                  </div>
                   <div className="field">
                     <input type="text" placeholder="Username" required="" />
                   </div>
                   <div className="field">
                     <input type="password" placeholder="Password" required="" />
                   </div>
-                  <div className="pass-link">
-                    <a href="#">Forgot password?</a>
+                  <div className="field">
+                    <input
+                      type="password"
+                      placeholder="Confirm password"
+                      required=""
+                    />
                   </div>
                   <div className="field btn">
                     <div className="btn-layer" />
-                    <input type="submit" defaultValue="Login" />
-                  </div>
-                  <div className="signup-link">
-                    Not a member? <a href="">Signup now</a>
+                    <input type="submit" defaultValue="Signup" />
                   </div>
                 </form>
               </div>
@@ -74,4 +74,4 @@ function login() {
   );
 }
 
-export default login;
+export default SignUp;
