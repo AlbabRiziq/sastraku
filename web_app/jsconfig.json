@@ -7,6 +7,9 @@
       "@components/*": [
         "./src/components/*",
       ],
+      "@model/*": [
+        "./src/Models/*",
+      ],
     }
   }
 }
