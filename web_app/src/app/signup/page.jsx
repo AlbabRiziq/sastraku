@@ -1,4 +1,6 @@
 "use client";
+
+import axios from "axios";
 import { useState } from "react";
 import "./signup.css";
 
@@ -9,10 +11,18 @@ function SignUp() {
   const [namaLengkap, setNamaLengkap] = useState("");
 
   const handleSignUp = () => {
+    console.log("asd");
     if (pass == confirmPass) {
-      console.log("username: ", username);
-      console.log("nama_lengkap: ", namaLengkap);
-      console.log("password: ", pass);
+      axios({
+        url: "/api/signup",
+        method: "POST",
+        params: {
+          username: username,
+          password: pass,
+          nama_lengkap: namaLengkap,
+        },
+      });
+      // console.log(process.env.);
     } else {
       console.log("Password tidak sama");
     }
@@ -55,7 +65,7 @@ function SignUp() {
                 <div className="slider-tab" />
               </div>
               <div className="form-inner">
-                <form action="#" className="signup">
+                <form className="signup">
                   <div className="field">
                     <input
                       type="text"
