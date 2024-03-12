@@ -1,9 +1,23 @@
 "use client";
-
+import { useState } from "react";
 import "./signup.css";
-import Link from "next/link";
 
 function SignUp() {
+  const [pass, setPass] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [username, setUsername] = useState("");
+  const [namaLengkap, setNamaLengkap] = useState("");
+
+  const handleSignUp = () => {
+    if (pass == confirmPass) {
+      console.log("username: ", username);
+      console.log("nama_lengkap: ", namaLengkap);
+      console.log("password: ", pass);
+    } else {
+      console.log("Password tidak sama");
+    }
+  };
+
   return (
     <main>
       <div className="container">
@@ -28,8 +42,6 @@ function SignUp() {
             </div>
             <div className="form-container">
               <div className="slide-controls">
-                {/* <input type="radio" name="slide" id="login" />
-                <input type="radio" name="slide" id="signup" defaultChecked /> */}
                 <label htmlFor="login" className="slide login">
                   <a href="/login">
                     <strong>LOGIN</strong>
@@ -45,24 +57,50 @@ function SignUp() {
               <div className="form-inner">
                 <form action="#" className="signup">
                   <div className="field">
-                    <input type="text" placeholder="Nama Lengkap" required="" />
+                    <input
+                      type="text"
+                      placeholder="Nama Lengkap"
+                      name="nama_lengkap"
+                      required=""
+                      onChange={(e) => setNamaLengkap(e.target.value)}
+                    />
                   </div>
                   <div className="field">
-                    <input type="text" placeholder="Username" required="" />
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      name="username"
+                      required=""
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
                   </div>
                   <div className="field">
-                    <input type="password" placeholder="Password" required="" />
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      required=""
+                      name="password"
+                      onChange={(e) => setPass(e.target.value)}
+                    />
                   </div>
                   <div className="field">
                     <input
                       type="password"
                       placeholder="Confirm password"
-                      required=""
+                      required
+                      name="confirmPass"
+                      onChange={(e) => setConfirmPass(e.target.value)}
                     />
                   </div>
                   <div className="field btn">
                     <div className="btn-layer" />
-                    <input type="submit" defaultValue="Signup" />
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleSignUp}
+                    >
+                      DAFTAR
+                    </button>
                   </div>
                 </form>
               </div>
