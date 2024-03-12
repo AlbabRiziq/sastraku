@@ -1,0 +1,36 @@
+*{
+    margin: 30px;
+    padding: 0;
+}
+body{
+    height: 100px;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    background: #9ec8ba;
+}
+.box{
+    height: 30px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(rgba(0, 0, 0, 0.3))
+}
+.box:hover input{
+    width: 300px;
+}
+.box input{
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+}
+.box a .fas{
+    color: #9ec8ba;
+    font-size: 18px;
+}
