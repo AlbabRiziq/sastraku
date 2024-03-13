@@ -21,7 +21,7 @@ function SignUp() {
           password: pass,
           nama_lengkap: namaLengkap,
         },
-      });
+      }).then((res) => console.log());
       // console.log(process.env.);
     } else {
       console.log("Password tidak sama");

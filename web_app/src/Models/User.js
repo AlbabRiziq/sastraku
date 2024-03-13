@@ -22,10 +22,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     min: 5,
   },
-  ttl: {
-    type: String,
-    required: true,
-  },
 }).pre("save", function (next) {
   const userId = Randomstring.generate(10);
 
