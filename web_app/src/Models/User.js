@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   nama_lengkap: {
     type: String,
@@ -19,10 +20,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  },
-  ttl: {
-    type: String,
-    required: true,
+    min: 5,
   },
 }).pre("save", function (next) {
   const userId = Randomstring.generate(10);
@@ -35,4 +33,5 @@ const userSchema = new mongoose.Schema({
   next();
 });
 
-module.exports = mongoose.model.User || mongoose.model("User", userSchema);
+const User = mongoose.models["User"] || mongoose.model("User", userSchema);
+export default User;
