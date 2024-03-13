@@ -8,15 +8,15 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request, res: Response) {
 
   await dbConnect()
-  
-  const {searchParams} = new URL(req.url)
+
+  const { searchParams } = new URL(req.url)
   const namaLengkap = searchParams.get("nama_lengkap")
   const username = searchParams.get("username")
   const passwd = searchParams.get("password")
   const ttl = searchParams.get("ttl")
 
   const validatePasswd = validator.isLength(passwd, { min: 5 })
-  
+
   const userN = await User.findOne({
     username: username
   })
@@ -31,22 +31,21 @@ export async function POST(req: Request, res: Response) {
       ttl: ttl
 
     })
-      return NextResponse.json({
-        message: "username berhasil ditambahkan",
-        data: {
-          nama_lengkap: data.nama_lengkap,
-          username: data.username
-        }
-      })
-      
-    
+    return NextResponse.json({
+      message: "username berhasil ditambahkan",
+      data: {
+        nama_lengkap: data.nama_lengkap,
+        username: data.username
+      }
+    })
+
   } else {
     return NextResponse.json({
       message: "Username sudah digunakan"
     }, {
       status: 400
     })
-    
+
   }
 
 
