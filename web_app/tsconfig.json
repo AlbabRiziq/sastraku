@@ -30,5 +30,17 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "baseUrl": "./src",
+  "paths": {
+    "@/*": [
+      "*"
+    ],
+    "@components/*": [
+      "components/*"
+    ],
+    "@model/*": [
+      "Models/*"
+    ]
+  }
 }
