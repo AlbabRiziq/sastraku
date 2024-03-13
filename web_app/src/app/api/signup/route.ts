@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import dbConnect from "../../lib/dbConnect";
 import User from "../../../Models/User";
 import validator from "validator";
+import randomstring from 'randomstring';
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request, res: Response) {
 
@@ -11,17 +13,41 @@ export async function POST(req: Request, res: Response) {
   const namaLengkap = searchParams.get("nama_lengkap")
   const username = searchParams.get("username")
   const passwd = searchParams.get("password")
+  const ttl = searchParams.get("ttl")
 
   const validatePasswd = validator.isLength(passwd, { min: 5 })
   
-  const userN = User.findOne({
+  const userN = await User.findOne({
     username: username
-  }).exec()
+  })
 
-  console.log(await userN);
-  
-  
-  
+  if (userN == null) {
+    const user_id = randomstring.generate(8)
+    const data = await User.create({
+      user_id: user_id,
+      username,
+      nama_lengkap: namaLengkap,
+      password: passwd,
+      ttl: ttl
 
-  return Response.json({ message: "asd" });
+    })
+      return NextResponse.json({
+        message: "username berhasil ditambahkan",
+        data: {
+          nama_lengkap: data.nama_lengkap,
+          username: data.username
+        }
+      })
+      
+    
+  } else {
+    return NextResponse.json({
+      message: "Username sudah digunakan"
+    }, {
+      status: 400
+    })
+    
+  }
+
+
 }
