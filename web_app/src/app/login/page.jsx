@@ -1,5 +1,7 @@
 import "./login.css";
 
+import Link from "next/link";
+
 function login() {
   return (
     <main>
@@ -25,13 +27,20 @@ function login() {
             </div>
             <div className="form-container">
               <div className="slide-controls">
-                <input type="radio" name="slide" id="login" defaultChecked="" />
-                <input type="radio" name="slide" id="signup" />
+                {/* <input type="radio" name="slide" id="login" defaultChecked="" />
+                <Link href="/signup" id="login">
+                  Home
+                </Link>
+                <input type="radio" name="slide" id="signup" /> */}
                 <label htmlFor="login" className="slide login">
-                  <strong>LOGIN</strong>
+                  <a href="/login">
+                    <strong>LOGIN</strong>
+                  </a>
                 </label>
                 <label htmlFor="signup" className="slide signup">
-                  <strong>SIGNUP</strong>
+                  <a href="/signup">
+                    <strong>SIGNUP</strong>
+                  </a>
                 </label>
                 <div className="slider-tab" />
               </div>
@@ -52,28 +61,6 @@ function login() {
                   </div>
                   <div className="signup-link">
                     Not a member? <a href="">Signup now</a>
-                  </div>
-                </form>
-                <form action="#" className="signup">
-                  <div className="field">
-                    <input type="text" placeholder="Nama Lengkap" required="" />
-                  </div>
-                  <div className="field">
-                    <input type="text" placeholder="Username" required="" />
-                  </div>
-                  <div className="field">
-                    <input type="password" placeholder="Password" required="" />
-                  </div>
-                  <div className="field">
-                    <input
-                      type="password"
-                      placeholder="Confirm password"
-                      required=""
-                    />
-                  </div>
-                  <div className="field btn">
-                    <div className="btn-layer" />
-                    <input type="submit" defaultValue="Signup" />
                   </div>
                 </form>
               </div>

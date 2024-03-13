@@ -17,7 +17,7 @@ Berikut adalah teknologi yang digunakan dalam pengembangan aplikasi ini:
 
 ### Backend
 
-- **PostgreSQL**
+- **MONGO DB**
 
 ## Kontributor
 

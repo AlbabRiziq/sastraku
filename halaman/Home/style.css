@@ -1,0 +1,32 @@
+body {
+    background-color: #9EC8BA;
+    font-family: Arial;
+    color: #092635;
+    font-size: 15px;
+
+    .recommend {
+
+    }
+
+    .boxmodel h1 {
+      width: 300px;
+      height: 300px;
+      border: 2px solid black;
+      border-radius: 15px;
+      font-weight: 700;
+      font-size: 20px;
+      padding-left: 15px;
+      text-align: left;
+    }
+
+    .boxmodel p{
+      font-weight: 300;
+      font-size: 15px;
+    }
+
+    .boxmodel img{
+      border-radius: 15px;
+      width: 250px;
+      height: 120px;
+    }
+  }
