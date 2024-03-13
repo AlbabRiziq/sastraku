@@ -10,7 +10,7 @@ body{
     background: #9ec8ba;
 }
 .box{
-    height: 30px;
+    height: 25px;
     display: flex;
     cursor: pointer;
     padding: 10px 20px;
@@ -20,7 +20,7 @@ body{
     box-shadow: 0 10px 25px rgba(rgba(0, 0, 0, 0.3))
 }
 .box:hover input{
-    width: 300px;
+    width: 100px;
 }
 .box input{
     width: 0;
@@ -30,7 +30,8 @@ body{
     transition: 0.8s;
     background: transparent;
 }
-.box a .fas{
+.box .i{
+    position: relative;
     color: #9ec8ba;
     font-size: 18px;
 }
