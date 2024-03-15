@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import User from "../../../Models/User";
 import jwt from 'jsonwebtoken'
-import dbConnect from "../../lib/dbConnect";
+import dbConnect from "../../../lib/dbConnect";
 
 export async function POST(req: Request, res: Response) {
 
