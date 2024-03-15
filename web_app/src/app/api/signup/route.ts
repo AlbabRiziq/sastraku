@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import dbConnect from "../../lib/dbConnect";
+import dbConnect from "../../../lib/dbConnect";
 import User from "../../../Models/User";
 import validator from "validator";
 import randomstring from 'randomstring';

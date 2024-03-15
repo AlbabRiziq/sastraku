@@ -8,7 +8,7 @@ https://github.com/vercel/next.js/blob/canary/examples/with-mongodb-mongoose/uti
 **/
 
 const dbConnect = async () => {
-  const MONGODB_URI = "mongodb://localhost:27017/sastraku";
+  const MONGODB_URI = process.env.NEXT_PUBLIC_MONGO_URI;
   return mongoose.connect(MONGODB_URI, {});
 };
 
