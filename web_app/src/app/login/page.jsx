@@ -1,10 +1,40 @@
-import "./login.css";
+"use client";
 
 import Link from "next/link";
+import axios from "axios";
+import "./login.css";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function login() {
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+
+  const handleLogin = () => {
+    axios({
+      url: "/api/login",
+      method: "POST",
+      params: {
+        username: username,
+        password: password,
+      },
+    })
+      .then((res) => {
+        toast.success("Login berhasil", {
+          onClose: () => {
+            location.href = "/";
+          },
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  };
+
   return (
     <main>
+      <ToastContainer />
       <div className="container">
         <div className="left">
           <div className="centered">
@@ -45,22 +75,36 @@ function login() {
                 <div className="slider-tab" />
               </div>
               <div className="form-inner">
-                <form action="#" className="login">
+                <form action="/api/login" method="POST" className="login">
                   <div className="field">
-                    <input type="text" placeholder="Username" required="" />
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      name="username"
+                      required=""
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
                   </div>
                   <div className="field">
-                    <input type="password" placeholder="Password" required="" />
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      required=""
+                      name="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
                   </div>
                   <div className="pass-link">
                     <a href="#">Forgot password?</a>
                   </div>
                   <div className="field btn">
                     <div className="btn-layer" />
-                    <input type="submit" defaultValue="Login" />
+                    <button type="button" className="btn" onClick={handleLogin}>
+                      Login
+                    </button>
                   </div>
                   <div className="signup-link">
-                    Not a member? <a href="">Signup now</a>
+                    Not a member? <a href="/signup">Signup now</a>
                   </div>
                 </form>
               </div>
