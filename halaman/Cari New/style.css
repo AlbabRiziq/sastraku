@@ -12,6 +12,7 @@ body{
 .box{
     height: 25px;
     display: flex;
+    justify-content: space-between;
     cursor: pointer;
     padding: 10px 20px;
     background: #fff;
@@ -30,8 +31,11 @@ body{
     transition: 0.8s;
     background: transparent;
 }
-.box .i{
-    position: relative;
-    color: #9ec8ba;
-    font-size: 18px;
+.h1{
+    font-family: "Montserrat", sans-serif;;
+    align:left; 
+    padding: 200px;
+}
+.kotak{
+    
 }
