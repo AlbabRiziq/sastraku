@@ -1,8 +1,11 @@
 "use client";
 
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
+
 import "./signup.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function SignUp() {
   const [pass, setPass] = useState("");
@@ -21,15 +24,27 @@ function SignUp() {
           password: pass,
           nama_lengkap: namaLengkap,
         },
-      }).then((res) => console.log());
+      })
+        .then((res) => {
+          toast.success("Username berhasil ditambahkan, silahkan login ulang", {
+            onClose: () => {
+              location.href = "/login";
+            },
+          });
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
+          // console.log();
+        });
       // console.log(process.env.);
     } else {
-      console.log("Password tidak sama");
+      toast.error("Pastikan konfirmasi password harus saama");
     }
   };
 
   return (
     <main>
+      <ToastContainer />
       <div className="container">
         <div className="left">
           <div className="centered">
@@ -96,7 +111,7 @@ function SignUp() {
                   <div className="field">
                     <input
                       type="password"
-                      placeholder="Confirm password"
+                      placeholder="Konfirmasi password"
                       required
                       name="confirmPass"
                       onChange={(e) => setConfirmPass(e.target.value)}

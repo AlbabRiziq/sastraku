@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+*{
+    margin: 30px;
+    padding: 0;
+}
+body{
+    height: 100px;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    background: #9ec8ba;
+}
+.box{
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(rgba(0, 0, 0, 0.3))
+}
+
+.box input{
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+}
+.title{
+    font-family: "Montserrat", sans-serif;;
+    align:left; 
+    padding: 0px;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    border: 2px solid transparent;
+}
+
+.kotak {
+    flex: 1;
+    margin: 30px;
+    padding: 40px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #ccc;
+    font-family: "Montserrat" , sans-serif;
+    font-weight: 700;
+    height: 10px;
+    width: 50px;
+
+    
+    
+}
