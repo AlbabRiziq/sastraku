@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar HTML CSS</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
-    />
-  </head>
-  <body>
-    <nav>
-      <span class="nav-name">Fahrul</span>
-      <ul class="nav-menu">
-        <li>
-          <a href="#">
-            <span class="nav-text">Home</span>
-            <i class="uil uil-estate nav-icon"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="nav-text">About</span>
-            <i class="uil uil-user nav-icon"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="nav-text">Project</span>
-            <i class="uil uil-award nav-icon"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="nav-text">Contact</span>
-            <i class="uil uil-telegram-alt nav-icon"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </body>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+</head>
+<body>
+   <div class="bottom-bar">
+    <ion-icon name="home-outline" class="icon" onclick="change(this)">
+    </ion-icon>
+    <ion-icon name="add-outline" class="icon active" onclick="change(this)">
+    </ion-icon>
+    <ion-icon name="search-outline" class="icon" onclick="change(this)">
+    </ion-icon>
+    <ion-icon name="person-outline" class="icon" onclick="change(this)">
+    </ion-icon>
+    
+   </div>
+</body>
 </html>
+<script>
+    function change(item) {
+        const buttons = document.querySelectorAll('ion-icon');
+        buttons.forEach(function(obj){
+            obj.classList.remove("active");
+        });
+        item.classList.add("active");
+    }
+</script>
