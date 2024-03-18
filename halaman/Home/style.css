@@ -58,5 +58,29 @@ img {
   border-radius: 30px;
   width: 250px;
   height: 120px;
+}
 
+.bottom-bar{
+  background-color: #eee;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20em;
+  max-width: 30em;
+  border-radius: 20px;
+}
+.icon{
+  font-size:  1.5em;
+  padding: .5em;
+  margin: .5em;
+  margin-top: 0;
+  transition: .5s ease-in-out;
+  border-radius: 100%;
+  border: 7px solid #eee;
+}
+.active{
+  transform: scale(1.25) translateY(-1em);
+  background: linear-gradient(135deg, #092635, #9EC8BA);
+  border: 7px solid #dcdcdc;
+  color: white;
 }

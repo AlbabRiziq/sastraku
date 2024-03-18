@@ -3,6 +3,10 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+    </script>
 </head>
 <body>
   <main>
@@ -68,6 +72,22 @@
         <img src="foto.jpg">
       </div>
     </div>
+    <div class="bottom-bar">
+      <ion-icon name="home-outline" class="icon" onclick="change(this)"></ion-icon>
+      <ion-icon name="add-outline" class="icon active" onclick="change(this)"></ion-icon>
+      <ion-icon name="search-outline" class="icon" onclick="change(this)"></ion-icon>
+      <ion-icon name="grid-outline" class="icon" onclick="change(this)"></ion-icon>
+      <ion-icon name="person-outline" class="icon" onclick="change(this)"></ion-icon>
+     </div>
 </main>
 </body>
 </html> 
+<script>
+  function change(item) {
+      const buttons = document.querySelectorAll('ion-icon');
+      buttons.forEach(function(obj){
+          obj.classList.remove("active");
+      });
+      item.classList.add("active");
+  }
+</script>
