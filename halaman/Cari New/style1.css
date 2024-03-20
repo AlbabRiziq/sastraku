@@ -37,20 +37,23 @@ body{
     margin: 20px;
 }
 
-.container {
+.grid-container {
     display: flex;
     border: 2px solid transparent;
+    grid-auto-flow: colum;
+    gap: 60px;
+    justify-content: center;
 }
 
 .kotak {
     flex: 1;
     margin: 30px;
-    padding: 40px;
+    padding: 20px;
     border: 2px solid #ccc;
-    border-radius: 5px;
     background-color: #ccc;
     font-family: "Montserrat" , sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     height: 10px;
-    width: 50px;   
+    border-radius: 5px;  
 }
+
