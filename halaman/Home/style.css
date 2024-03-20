@@ -60,6 +60,12 @@ img {
   height: 120px;
 }
 
+.navbar{
+position: fixed;
+  left: 50%;
+  right: 50%;
+}
+
 .bottom-bar{
   background-color: #eee;
   margin-left: auto;
@@ -68,6 +74,7 @@ img {
   margin-top: 20em;
   max-width: 30em;
   border-radius: 20px;
+  
 }
 .icon{
   font-size:  1.5em;
