@@ -1,0 +1,51 @@
+body{
+    background-color: #9EC8BA;
+    font-family: Arial;
+    color: #092635;
+    font-size: 15px;
+
+}
+.box{
+    margin: 60px;
+    width: 150px;
+    height: 250px;
+    padding: 30px;
+    background-color:aliceblue;
+    text-align: center;
+}
+
+.box1{
+    width: 320px;  
+    height: 50px;  
+    padding: 10px;  
+    border: 1px solid rgb(0, 0, 0);  
+    margin: 0;
+    border-radius: 5%;
+}
+
+.company{
+    width: 17%;
+    height: 360px;
+    background: #fff;
+    margin: 50px 50px;
+}
+p{
+    top: 31%;
+    left: 8%;
+    position: absolute;
+    color: #cacacaf3;
+}
+img{
+    width: 2.5%;
+    height: 25px;
+    position: absolute;
+    top: 7.6%;
+    left: 3.8%;
+}
+.img1{
+    width: 70%;
+    height: 25px;
+    position: absolute;
+    top: 28%;
+    left: 9%;
+}
