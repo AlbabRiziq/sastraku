@@ -18,12 +18,14 @@ body {
 }
 
 .image-container {
-  padding: 30px;
+  padding: 20px;
   border: 2px solid black;
   border-radius: 20px;
   width: 350px;
   height: 470px;
+  margin: 30px;
 }
+
 .container{
   display: flex;
   width: 100vw;
@@ -35,10 +37,6 @@ img {
   border-radius: 20px;
   width: 350px;
   height: 470px;
-}
-
-.text-container {
-  margin-left: 20px;
 }
 
   /* font-family: "Montserrat", sans-serif;
@@ -58,31 +56,25 @@ span {
   text-align: right;
 }
 
-
 .menu{
-/* position: fixed; */
-  left: 50%;
-  right: 0%;
+
 }
-
-/* .pilihan{
-  background-color: #eee;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  margin-top: 20em;
-  max-width: 30em;
-  border-radius: 20px;
-} */
-
+  
 .icon{
-  font-size:  1.5em;
-  padding: .30em;
-  margin: .30em;
+  font-size:  2.5em;
+  padding: .10em;
+  margin: .10em;
   margin-top: 0px;
-  border-radius: 100%;
-  border: 7px solid #092635;
-  align-content: left;
+  
+}
+.round{
+  border: 2px solid #092635;
+  border-radius: 15px 0px 0px 15px;
+  padding: 30px;
+  width:  450px;
+  height:  200px;
+  align: left ;
+  
 }
 /* .active{
   transform: scale(1.25) translateY(-1em);
