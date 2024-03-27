@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap")
 
 * {
   padding: 0;
@@ -37,16 +37,6 @@ img {
   border-radius: 20px;
   width: 350px;
   height: 470px;
-}
-
-  /* font-family: "Montserrat", sans-serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: 15px;
-      padding-left: 15px;
-      text-align: left; */
-  /* line-height: 90%; */
-
 
 span {
   font-family: "Montserrat", sans-serif;
@@ -76,9 +66,36 @@ span {
   align: left ;
   
 }
-/* .active{
-  transform: scale(1.25) translateY(-1em);
-  background: linear-gradient(135deg, #092635, #9EC8BA);
-  border: 7px solid #dcdcdc;
-  color: white;
+.tulis{
+  border-radius: 10px;
+  background-color: #d9d9d9;
+
+  padding: 10px;
+  width: 360px;
+  height: 20px;
+  align: left ;
+}
+.send{
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  padding: 10px;
+  width:  90px;
+  height: 20px;
+  align: left ;
+
+}
+.kirim{
+  display: flex;
+  justify-content: space-between;
+}
+.iconsend{
+  font-size:  2em;
+  padding: .10em;
+  margin: .15em;
+  margin-top: .15em;
+  
 }
