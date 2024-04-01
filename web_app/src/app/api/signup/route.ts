@@ -20,6 +20,7 @@ export async function POST(req: Request, res: Response) {
     username: username
   })
 
+
   if (userN == null) {
     const user_id = randomstring.generate(8)
     const data = await User.create({

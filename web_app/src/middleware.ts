@@ -10,10 +10,7 @@ export function middleware(req: NextRequest) {
             const isValid = KJUR.jws.JWS.verifyJWT(token.value, process.env.NEXT_PUBLIC_SECRET_KEY, { alg: ['HS256'] });
 
             if (isValid) {
-                // console.log(typeof isValid);
-
                 return NextResponse.redirect(new URL("/", req.url))
-
             } else {
                 return NextResponse.next();
             }

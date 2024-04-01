@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Randomstring from "randomstring";
 
 const categorySchema = new mongoose.Schema({
   category_id: {
@@ -11,7 +12,7 @@ const categorySchema = new mongoose.Schema({
     required: true,
   },
 }).pre("save", function (next) {
-  const categoryId = Randomstring.generate(10);
+  const categoryId = Randomstring.generate(5);
 
   this.category_id = categoryId;
   next();
