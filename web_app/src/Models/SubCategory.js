@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Randomstring from "randomstring";
 
 const subCategorySchema = new mongoose.Schema({
   sub_category_id: {
@@ -10,14 +11,11 @@ const subCategorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  category_id: {
-    type: String,
-    required: true,
-  },
 }).pre("save", function (next) {
   const subCategoryId = Randomstring.generate(10);
 
   this.sub_category_id = subCategoryId;
+  this.sub_category_name = this.sub_category_name.toUpperCase();
   next();
 });
 
