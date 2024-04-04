@@ -46,7 +46,6 @@ function Post() {
   return (
     <div className="w-screen p-5">
       <h1 className="font-bold text-2xl">BUAT KARYA</h1>
-
       <div className="mt-5">
         <label htmlFor="title">MASUKAN JUDUL KARYA</label>
         <br />
@@ -95,12 +94,15 @@ function Post() {
         ></textarea>
         <br />
       </div>
-
       <div className="mt-10">
-        <Editor onChange={(v) => setIsi(v)} />
+        <Editor />
       </div>
-
-      <button className="btn mt-5">SELESAI</button>
+      <button className="btn mt-5" onClick={handlePost}>
+        SELESAI
+      </button>
+      <br />
+      <br />
+      <br />
 
       <Navbar />
     </div>

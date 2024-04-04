@@ -25,7 +25,6 @@ export async function POST(req: Request, res: Response) {
         })
     } else {
         const paswdHashed = user.password
-        const comparePaswdResult = await bcrypt.compare(password, paswdHashed)
         const token = jwt.sign({ user_id: user.user_id }, process.env.NEXT_PUBLIC_SECRET_KEY)
 
         const headers = new Headers();
