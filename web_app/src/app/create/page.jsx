@@ -14,6 +14,7 @@ function Post() {
   const [dataKategori, setDataKategori] = useState([]);
   const [dataTema, setDataTema] = useState([]);
   const [isi, setIsi] = useState("");
+  const [desc, setDesc] = useState("");
   const [kategori, setKategori] = useState("");
   const [tema, setTema] = useState("");
   const [title, setTitle] = useState("");
@@ -27,6 +28,20 @@ function Post() {
       setDataTema(res.data);
     });
   }, []);
+
+  const handlePost = () => {
+    axios
+      .post("/api/create", {
+        value: isi,
+        content_title: title,
+        content_description: desc,
+        sub_category_id: tema,
+        category_id: kategori,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
 
   return (
     <div className="w-screen p-5">
@@ -70,10 +85,19 @@ function Post() {
           ))}
         </select>
         <br />
+        <br />
+        <label htmlFor="kategori">DESKRIPSI SINGKAT (SINOPSIS)</label>
+        <br />
+        <textarea
+          className="textarea textarea-bordered w-full max-w-xs"
+          placeholder="Bio"
+          onChange={(e) => setDesc(e.target.value)}
+        ></textarea>
+        <br />
       </div>
 
       <div className="mt-10">
-        <Editor onChange={(v) => console.log(v)} />
+        <Editor onChange={(v) => setIsi(v)} />
       </div>
 
       <button className="btn mt-5">SELESAI</button>

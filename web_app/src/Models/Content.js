@@ -6,6 +6,10 @@ const contentSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  user_id: {
+    type: String,
+    required: true,
+  },
   value: {
     type: String,
     required: true,
@@ -16,7 +20,7 @@ const contentSchema = new mongoose.Schema({
   },
   content_description: {
     type: String,
-    required: true,
+    default: "",
   },
   sub_category_id: {
     type: String,
@@ -43,3 +47,5 @@ const contentSchema = new mongoose.Schema({
 
 const Content =
   mongoose.models["Content"] || mongoose.model("Content", contentSchema);
+
+export default Content;
