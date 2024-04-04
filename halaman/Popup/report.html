@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup Modal Box</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="report.css" />
+    <!-- Fontawesome CDN Link -->
+    
+  </head>
+  <body>
+    <section>
+      <button class="show-modal">Show Modal</button>
+      <span class="overlay"></span>
+      <div class="modal-box">
+        <ion-icon name="warning-outline" class="icon" style="align-items: center; color: darkred;"></ion-icon>
+        <strong><h2>Report</strong></h2><br>
+        <h3>Apakah anda yakin akan melaporkan postingan ini?</h3>
+
+        <div class="buttons">
+          <button class="close-btn">No</button>
+          <button>Yes</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const section = document.querySelector("section"),
+        overlay = document.querySelector(".overlay"),
+        showBtn = document.querySelector(".show-modal"),
+        closeBtn = document.querySelector(".close-btn");
+
+      showBtn.addEventListener("click", () => section.classList.add("active"));
+
+      overlay.addEventListener("click", () =>
+        section.classList.remove("active")
+      );
+
+      closeBtn.addEventListener("click", () =>
+        section.classList.remove("active")
+      );
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  </body>
+</html>

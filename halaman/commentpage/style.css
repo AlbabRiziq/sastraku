@@ -76,20 +76,31 @@ span {
   border-radius: 15px 0px 0px 15px;
   padding: 30px;
   width: 450px;
-  height: 200px;
-  align: left;
+  height: 230px;
+  overflow-y: scroll;
  } 
 
-.tulis {
-  border-radius: 10px;
+.tuliskomen {
   background-color: #d9d9d9;
-  color: darkslategray;
+  border-radius: 10px;
+  text-decoration: #092635;
+  cursor: pointer;
   padding: 10px;
   width: 360px;
   height: 20px;
-  align: left;
+  align: left; 
 }
-
+.tuliskomen:hover input{
+  width: 100px;
+}
+.tuliskomen input{
+  width: 0;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  transition: 0.8s;
+  background: transparent;
+}
 .send {
   display: flex;
   font-family: "Montserrat", sans-serif;
@@ -140,16 +151,9 @@ span {
   background: rgb (11, 11, 114);
   width: 400px;
   margin: 10% auto;
-  align: left;
+  overflow-y: scroll;
 }
-.scroll-div{
-  width: 400px;
-  background: rgb (11, 11, 114);
-  height: 300px;
-  overflow: hidden;
-  overflow: scroll;
-  align: left;
-}
+
 .scroll-object{
   
 }
