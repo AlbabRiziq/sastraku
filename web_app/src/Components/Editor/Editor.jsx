@@ -1,26 +1,31 @@
+// components/custom-editor.js
+
+import React from "react";
+import Editor from "ckeditor5-custom-build";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-function Editor({ value, onChange }) {
-  const editorConfiguration = {
-    toolbar: {
-      items: [
-        "heading",
-        "|",
-        "bold",
-        "italic",
-        "link",
-        "bulletedList",
-        "blockQuote",
-        "undo",
-        "redo",
-      ],
-    },
-  };
+const editorConfiguration = {
+  toolbar: [
+    "heading",
+    "|",
+    "bold",
+    "italic",
+    "bulletedList",
+    "numberedList",
+    "|",
+    "outdent",
+    "indent",
 
+    "blockQuote",
+    "undo",
+    "redo",
+  ],
+};
+
+function CustomEditor({ value, onChange }) {
   return (
     <CKEditor
-      editor={ClassicEditor}
+      editor={Editor}
       config={editorConfiguration}
       data={value}
       onChange={(event, editor) => {
@@ -31,4 +36,4 @@ function Editor({ value, onChange }) {
   );
 }
 
-export default Editor;
+export default CustomEditor;

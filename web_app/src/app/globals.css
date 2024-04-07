@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rsw-toolbar {
+  @apply p-1 flex items-center justify-center flex-wrap;
+}
+.rsw-btn {
+  @apply m-1;
+}
+.rsw-dd {
+  @apply select scale-75 select-bordered w-full max-w-xs my-2;
+}

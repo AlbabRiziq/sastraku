@@ -1,23 +1,28 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
-
-import dynamic from "next/dynamic";
+import {
+  Editor,
+  EditorProvider,
+  BtnBold,
+  BtnClearFormatting,
+  Toolbar,
+  BtnUndo,
+  BtnRedo,
+  BtnItalic,
+  BtnStyles,
+} from "react-simple-wysiwyg";
 
 function Post() {
-  const Editor = dynamic(() => import("../../Components/Editor/Editor"), {
-    ssr: false,
-  });
-
   const [dataKategori, setDataKategori] = useState([]);
   const [dataTema, setDataTema] = useState([]);
-  const [isi, setIsi] = useState("");
   const [desc, setDesc] = useState("");
   const [kategori, setKategori] = useState("");
   const [tema, setTema] = useState("");
   const [title, setTitle] = useState("");
+  const [isi, setIisi] = useState();
 
   useEffect(() => {
     axios.get("/api/kategori").then((res) => {
@@ -95,7 +100,24 @@ function Post() {
         <br />
       </div>
       <div className="mt-10">
-        <Editor />
+        <EditorProvider>
+          <Editor
+            className="bg-gray-500 bg"
+            value={isi}
+            onChange={(e) => {
+              setIisi(e.target.value);
+            }}
+          >
+            <Toolbar>
+              <BtnUndo />
+              <BtnRedo />
+              <BtnItalic />
+              <BtnBold />
+              <BtnClearFormatting />
+              <BtnStyles />
+            </Toolbar>
+          </Editor>
+        </EditorProvider>
       </div>
       <button className="btn mt-5" onClick={handlePost}>
         SELESAI
@@ -104,7 +126,7 @@ function Post() {
       <br />
       <br />
 
-      <Navbar />
+      <Navbar onHandleChange={(e) => console.log(e)} />
     </div>
   );
 }
