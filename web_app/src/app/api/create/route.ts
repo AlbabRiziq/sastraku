@@ -8,35 +8,41 @@ import User from "../../../Models/User";
 
 export async function POST(req: NextRequest, res: NextResponse) {
     await dbConnect()
-    const headers = req.headers
     const url = new URL(req.url);
     const title = url.searchParams.get('content_title');
-    const content = url.searchParams.get('content');
+    const content = url.searchParams.get('value');
     const desc = url.searchParams.get('content_description');
-    const category = url.searchParams.get('category');
+    const category = url.searchParams.get('category_id');
+    const sub_category = url.searchParams.get('category_id');
+    console.log(sub_category);
+
+
     let author: String;
+
+    // console.log(title, content, desc, category);
+
 
     const cookie = req.cookies;
     const token = cookie.getAll("tkn")[0].value
 
-    jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY, async (err, decoded) => {
-        if (err) {
-            return NextResponse.redirect("/login")
-        } else {
-            const username = await User.findOne({ user_id: decoded.user_id }).select("username")
-            author = username.username
 
-            // const newContent = new Content({
-            //     title: title,
-            //     content: content,
-            //     description: desc,
-            //     category: category,
-            // })
+    const verify = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY)
 
-            console.log(content);
+    if (!verify) {
+        console.log("Invalid Token");
 
-        }
-    })
+    }
+
+
+
+    // const user = await User.findOne({
+    //     user_id: user_id
+    // })
+    // author = user
+
+    // if ()
+
+
 
 
     return NextResponse.json({ message: "kdkdfk" })

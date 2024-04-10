@@ -7,7 +7,11 @@ export function LoginMiddleware(req: NextRequest) {
         const token = req.cookies.get('tkn');
         const isValid = KJUR.jws.JWS.verifyJWT(token.value, process.env.NEXT_PUBLIC_SECRET_KEY, { alg: ['HS256'] });
 
+
+        console.log("d");
+
         if (isValid) {
+
             // console.log(typeof isValid);
 
             return NextResponse.redirect(new URL("/", req.url))

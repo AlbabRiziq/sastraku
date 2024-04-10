@@ -35,17 +35,19 @@ function Post() {
   }, []);
 
   const handlePost = () => {
-    axios
-      .post("/api/create", {
+    axios({
+      method: "POST",
+      url: "/api/create",
+      params: {
         value: isi,
         content_title: title,
         content_description: desc,
         sub_category_id: tema,
         category_id: kategori,
-      })
-      .then((res) => {
-        console.log(res);
-      });
+      },
+    }).then((res) => {
+      console.log(res);
+    });
   };
 
   return (
