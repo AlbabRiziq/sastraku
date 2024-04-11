@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import Content from "../../../Models/Content"
 import dbConnect from "../../../lib/dbConnect";
 import jwt from 'jsonwebtoken'
@@ -56,7 +55,33 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 }
 
-export function GET(req: NextRequest, res: NextResponse) {
-    return NextResponse.json({ message: "Hello" })
+export async function GET(req: NextRequest, res: NextResponse) {
+
+    await dbConnect()
+
+    const url: URL = new URL(req.url);
+    const id_post: String = url.searchParams.get('id_post');
+
+    if (id_post !== null) {
+        try {
+            const post = await Content.findOne({ content_id: id_post })
+            return NextResponse.json({ message: "Success", data: post })
+
+        } catch (err) {
+            return NextResponse.json({ message: "Konten tidak ditemukan" }, {
+                status: 400
+            })
+        }
+    } else {
+        try {
+            const post = await Content.find()
+            return NextResponse.json({ message: "Success", data: post })
+
+        } catch (err) {
+            return NextResponse.json({ message: "Konten tidak ditemukan" }, {
+                status: 400
+            })
+        }
+    }
 
 }

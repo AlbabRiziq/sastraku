@@ -35,7 +35,7 @@ export function middleware(req: NextRequest) {
             return NextResponse.redirect(new URL("/login", req.url))
         }
     }
-    if (req.nextUrl.pathname.startsWith('/api/post') || req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE' || req.method === 'PATCH' || req.method === 'OPTIONS' || req.method === 'HEAD') {
+    if (req.nextUrl.pathname.startsWith('/api/post') && req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE' || req.method === 'PATCH' || req.method === 'OPTIONS' || req.method === 'HEAD') {
 
 
         if (req.cookies.get('tkn')) {

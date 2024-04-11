@@ -44,8 +44,16 @@ const contentSchema = new mongoose.Schema({
   },
 }).pre("save", function (next) {
   const contentId = Randomstring.generate(10);
-
   this.content_id = contentId;
+
+  const isi = this.value;
+
+  const regex = /<font\s+face=\\"PT\s+Serif,\s+Georgia,\s+serif\\">|<\/font>/g;
+
+  const newIsi = isi.replace(regex, "");
+
+  this.value = newIsi;
+
   next();
 });
 

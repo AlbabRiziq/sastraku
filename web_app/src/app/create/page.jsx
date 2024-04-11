@@ -37,7 +37,7 @@ function Post() {
   }, []);
 
   const handlePost = () => {
-    console.log(tema);
+    console.log();
     axios({
       method: "POST",
       url: "/api/post",
@@ -112,6 +112,7 @@ function Post() {
       <div className="mt-10">
         <EditorProvider>
           <Editor
+            containerProps={{}}
             className="bg-gray-500 bg"
             value={isi}
             onChange={(e) => {

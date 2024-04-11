@@ -1,17 +1,32 @@
 import Card from "../Components/Card/Card";
 import Navbar from "../Components/Navbar/Navbar";
+import dbConnect from "../lib/dbConnect";
+import Content from "../Models/Content";
 
-// async function getPosts() {
-//   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-//   const data = await res.json();
-//   return data;
-// }
 
-export default function Home() {
+async function getAllPost() {
+  await dbConnect()
+
+  try {
+    const res = await Content.find()
+    return res
+  } catch (err) {
+    return
+  }
+
+
+}
+
+export default async function Home() {
+
+  const data: Object[] = await getAllPost()
+
+
+
   return (
-    <div className="">
+    <div className="bg-[#9ec8ba]">
       <div className="carousel w-full">
-        <div id="slide1" className="carousel-item relative w-full">
+        {/* <div id="slide1" className="carousel-item relative w-full">
           <Card
             title="JUDUL"
             author="Albab"
@@ -40,7 +55,28 @@ export default function Home() {
               ❯
             </a>
           </div>
-        </div>
+        </div> */}
+
+        {data.map((item: any, index) => {
+          return (
+            <div id={`slide${index}`} className="carousel-item relative w-full" key={index}>
+              <Card
+                id={item.content_id}
+                title={item.content_title}
+                author={item.author}
+                desc={item.content_description}
+              />
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                <a href={`#slide${index - 1}`} className="btn btn-circle bg-transparent">
+                  ❮
+                </a>
+                <a href={`#slide${index + 1}`} className="btn btn-circle bg-transparent">
+                  ❯
+                </a>
+              </div>
+            </div>
+          )
+        })}
       </div>
       <Navbar />
     </div>

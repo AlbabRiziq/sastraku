@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-[#9ec8ba]">
       <body className={montserrat.className}>{children}</body>
     </html>
   );
