@@ -40,7 +40,7 @@ function Post() {
     console.log(tema);
     axios({
       method: "POST",
-      url: "/api/create",
+      url: "/api/post",
       params: {
         value: isi,
         content_title: title,

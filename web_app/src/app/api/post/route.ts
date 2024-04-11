@@ -15,14 +15,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const category_id = url.searchParams.get('category_id');
     const sub_category_id = url.searchParams.get('category_id');
 
-
-
     let author: String;
 
     const cookie = req.cookies;
     const token = cookie.getAll("tkn")[0].value
-
-
     const verify = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY)
 
     if (!verify) {
@@ -31,12 +27,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
         })
 
     }
+
     const user_data = await User.findOne({ user_id: verify.user_id })
     const user_id = user_data.user_id
 
     author = user_data.nama_lengkap
     try {
-        await Content.create({
+        const data = await Content.create({
             user_id,
             content_title: title,
             content_description: desc,
@@ -46,18 +43,20 @@ export async function POST(req: NextRequest, res: NextResponse) {
             author
         })
 
+        const content_id = data.content_id
 
         return NextResponse.json({ message: "Konten berhasil dibuat" })
     } catch (err) {
 
         console.log(err);
-
         return NextResponse.json({ message: err }, {
             status: 400
         })
     }
 
+}
 
-    return NextResponse.json({ message: "kdkdfk" })
+export function GET(req: NextRequest, res: NextResponse) {
+    return NextResponse.json({ message: "Hello" })
 
 }
