@@ -4,6 +4,7 @@ import User from "../../../Models/User";
 import jwt from 'jsonwebtoken'
 import dbConnect from "../../../lib/dbConnect";
 
+
 export async function POST(req: Request, res: Response) {
 
     dbConnect()
@@ -24,18 +25,35 @@ export async function POST(req: Request, res: Response) {
             status: 404
         })
     } else {
+
+        console.log(password, user.password);
+
         const paswdHashed = user.password
-        const comparePaswdResult = await bcrypt.compare(password, paswdHashed)
         const token = jwt.sign({ user_id: user.user_id }, process.env.NEXT_PUBLIC_SECRET_KEY)
-
         const headers = new Headers();
-        headers.set('set-cookie', `tkn=${token};path=/;`);
 
-        return NextResponse.json({
-            message: "Login Berhasil"
-        }, {
-            headers: headers
-        })
+        const validatePaswd = bcrypt.compareSync(password, paswdHashed)
+
+        if (validatePaswd) {
+
+
+            headers.set('set-cookie', `tkn=${token};path=/;`);
+
+            return NextResponse.json({
+                message: "Login Berhasil"
+            }, {
+                headers: headers
+            })
+        } else {
+            return NextResponse.json({
+                message: "Password atau username tidak valid"
+            }, {
+                status: 404
+            })
+        }
+
+
+
     }
 
 

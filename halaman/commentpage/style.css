@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 10px;
+}
+
+body {
+  background-color: #9EC8BA;
+  font-family: Arial;
+  color: #092635;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+.image-container {
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 350px;
+  height: 470px;
+
+}
+
+.container {
+  padding-top: 30px;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: row; */
+}
+
+.container>div {
+  display: flex;
+  gap: 30px;
+
+}
+
+img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 20px;
+  width: 350px;
+  height: 470px;
+}
+
+span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  padding-top: 0px;
+  text-align: right;
+}
+
+.menu {
+  padding: 3px;
+  margin: 3px;
+  align-items: center;
+}
+
+.icon {
+  font-size: 2.5em;
+  padding: .10em;
+  margin: .10em;
+  margin-top: 0px;
+
+}
+
+.round { 
+  border: 2px solid #092635;
+  border-radius: 15px 0px 0px 15px;
+  padding: 30px;
+  width: 450px;
+  height: 200px;
+  align: left;
+ } 
+
+.tulis {
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  color: darkslategray;
+  padding: 10px;
+  width: 360px;
+  height: 20px;
+  align: left;
+}
+
+.send {
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  padding: 10px;
+  width: 90px;
+  height: 20px;
+
+}
+
+.kirim {
+  display: flex;
+  justify-content: space-between;
+}
+
+.iconsend {
+  font-size: 1.5em;
+  padding: .15em;
+  margin: .15em;
+  margin-top: .15em;
+
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 2px solid #092635;
+  border-radius: 10px;
+  padding: 10px;
+  width: 380px;
+  height: 30px;
+  align: left;
+}
+
+.fprofile {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.scroll-bg{
+  background: rgb (11, 11, 114);
+  width: 400px;
+  margin: 10% auto;
+  align: left;
+}
+.scroll-div{
+  width: 400px;
+  background: rgb (11, 11, 114);
+  height: 300px;
+  overflow: hidden;
+  overflow: scroll;
+  align: left;
+}
+.scroll-object{
+  
+}
