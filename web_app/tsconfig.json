@@ -26,7 +26,8 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/app/api/kategori/[id].js"
   ],
   "exclude": [
     "node_modules"
@@ -41,6 +42,9 @@
     ],
     "@model/*": [
       "Models/*"
-    ]
+    ],
+    "@assets/*": [
+      "./src/assets*",
+    ],
   }
 }
