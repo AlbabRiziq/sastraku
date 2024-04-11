@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
+import Randomstring from "randomstring";
 
 const contentSchema = new mongoose.Schema({
   content_id: {
     type: String,
-    required: true,
     unique: true,
   },
   user_id: {

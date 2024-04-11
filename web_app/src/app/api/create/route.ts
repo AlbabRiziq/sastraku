@@ -12,15 +12,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const title = url.searchParams.get('content_title');
     const content = url.searchParams.get('value');
     const desc = url.searchParams.get('content_description');
-    const category = url.searchParams.get('category_id');
-    const sub_category = url.searchParams.get('category_id');
-    console.log(sub_category);
+    const category_id = url.searchParams.get('category_id');
+    const sub_category_id = url.searchParams.get('category_id');
+
 
 
     let author: String;
-
-    // console.log(title, content, desc, category);
-
 
     const cookie = req.cookies;
     const token = cookie.getAll("tkn")[0].value
@@ -29,20 +26,36 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const verify = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY)
 
     if (!verify) {
-        console.log("Invalid Token");
+        return NextResponse.json({ message: "Token is not valid" }, {
+            status: 400
+        })
 
     }
+    const user_data = await User.findOne({ user_id: verify.user_id })
+    const user_id = user_data.user_id
+
+    author = user_data.nama_lengkap
+    try {
+        await Content.create({
+            user_id,
+            content_title: title,
+            content_description: desc,
+            value: content,
+            category_id,
+            sub_category_id,
+            author
+        })
 
 
+        return NextResponse.json({ message: "Konten berhasil dibuat" })
+    } catch (err) {
 
-    // const user = await User.findOne({
-    //     user_id: user_id
-    // })
-    // author = user
+        console.log(err);
 
-    // if ()
-
-
+        return NextResponse.json({ message: err }, {
+            status: 400
+        })
+    }
 
 
     return NextResponse.json({ message: "kdkdfk" })

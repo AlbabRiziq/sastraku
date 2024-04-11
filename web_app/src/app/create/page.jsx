@@ -1,6 +1,6 @@
 "use client";
 
-import React, { lazy, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
 import {
@@ -14,6 +14,8 @@ import {
   BtnItalic,
   BtnStyles,
 } from "react-simple-wysiwyg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Post() {
   const [dataKategori, setDataKategori] = useState([]);
@@ -35,6 +37,7 @@ function Post() {
   }, []);
 
   const handlePost = () => {
+    console.log(tema);
     axios({
       method: "POST",
       url: "/api/create",
@@ -45,13 +48,18 @@ function Post() {
         sub_category_id: tema,
         category_id: kategori,
       },
-    }).then((res) => {
-      console.log(res);
-    });
+    })
+      .then((res) => {
+        toast.success("Berhasil membuat karya");
+      })
+      .catch((err) => {
+        toast.error("Gagal membuat karya, pastikan semua form terisi");
+      });
   };
 
   return (
     <div className="w-screen p-5">
+      <ToastContainer />
       <h1 className="font-bold text-2xl">BUAT KARYA</h1>
       <div className="mt-5">
         <label htmlFor="title">MASUKAN JUDUL KARYA</label>
@@ -81,11 +89,11 @@ function Post() {
         <label htmlFor="kategori">MASUKAN TEMA</label>
         <br />
         <select
-          onSelect={(e) => setTema(e.target.value)}
+          onChange={(e) => setTema(e.target.value)}
           className="select select-bordered w-full max-w-xs"
         >
-          {dataTema.map((item) => (
-            <option key={item.sub_category_id} value={item.sub_category_id}>
+          {dataTema.map((item, index) => (
+            <option key={index} value={item.sub_category_id}>
               {item.sub_category_name}
             </option>
           ))}

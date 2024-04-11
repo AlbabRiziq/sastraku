@@ -20,6 +20,7 @@
     "react-dom": "^18",
     "react-simple-wysiwyg": "^3.0.2",
     "react-toastify": "^10.0.4",
+    "swiper": "^11.1.1",
     "validator": "^13.11.0"
   },
   "devDependencies": {

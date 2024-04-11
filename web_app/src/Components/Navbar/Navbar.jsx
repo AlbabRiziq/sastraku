@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <nav className="fixed bottom-0 right-0 w-screen left-0 text-white flex items-center justify-center">
       <div className="bg-[#092635] w-full flex items-center justify-evenly p-5 rounded-t-lg">
-        <a href="">
+        {/* <a href="">
           <svg
             className="w-6"
             viewBox="0 0 16 19"
@@ -16,7 +16,7 @@ function Navbar() {
               fill="#9EC8BA"
             />
           </svg>
-        </a>
+        </a> */}
 
         <a href="">
           <svg
@@ -31,7 +31,7 @@ function Navbar() {
             />
           </svg>
         </a>
-        <a href="">
+        {/* <a href="">
           <svg
             className="w-6"
             viewBox="0 0 17 17"
@@ -43,7 +43,7 @@ function Navbar() {
               fill="#9EC8BA"
             />
           </svg>
-        </a>
+        </a> */}
       </div>
     </nav>
   );
