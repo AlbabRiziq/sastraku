@@ -1,10 +1,10 @@
-import Link from "next/link";
+// import Link from "next/link";
 
 function Navbar() {
   return (
     <nav className="fixed bottom-0 right-0 w-screen left-0 text-white flex items-center justify-center">
       <div className="bg-[#092635] w-full flex items-center justify-evenly p-5 rounded-t-lg">
-        <Link href="/">
+        <a href="/">
           <svg
             className="w-6"
             viewBox="0 0 16 19"
@@ -16,7 +16,7 @@ function Navbar() {
               fill="#9EC8BA"
             />
           </svg>
-        </Link>
+        </a>
 
         <a href="">
           <svg
@@ -31,19 +31,6 @@ function Navbar() {
             />
           </svg>
         </a>
-        {/* <a href="">
-          <svg
-            className="w-6"
-            viewBox="0 0 17 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8.31708 0.757935C9.3849 0.757935 10.409 1.18212 11.164 1.93719C11.9191 2.69225 12.3433 3.71633 12.3433 4.78415C12.3433 5.85197 11.9191 6.87606 11.164 7.63112C10.409 8.38618 9.3849 8.81037 8.31708 8.81037C7.24926 8.81037 6.22518 8.38618 5.47012 7.63112C4.71506 6.87606 4.29087 5.85197 4.29087 4.78415C4.29087 3.71633 4.71506 2.69225 5.47012 1.93719C6.22518 1.18212 7.24926 0.757935 8.31708 0.757935ZM8.31708 10.8235C12.7661 10.8235 16.3695 12.6252 16.3695 14.8497V16.8628H0.264648V14.8497C0.264648 12.6252 3.86811 10.8235 8.31708 10.8235Z"
-              fill="#9EC8BA"
-            />
-          </svg>
-        </a> */}
       </div>
     </nav>
   );
