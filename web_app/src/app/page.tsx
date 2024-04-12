@@ -1,26 +1,30 @@
-"use client"
-
 import { useEffect, useState } from "react";
 import Card from "../Components/Card/Card";
 import Navbar from "../Components/Navbar/Navbar";
 import axios from "axios";
+import Content from "../Models/Content";
+import dbConnect from "../lib/dbConnect";
 
 
-export default function Home() {
+
+async function getAllPost() {
+  await dbConnect()
+
+  try {
+    const res = await Content.find()
+    return res
+  } catch (err) {
+    return
+  }
 
 
-  const [data, setData] = useState([])
+}
 
 
-  useEffect(() => {
-    axios({
-      method: 'GET',
-      url: "/api/post",
-    }).then((res) => {
-      setData(res.data.data)
 
-    })
-  }, [])
+export default async function Home() {
+  const data: Object[] = await getAllPost()
+
 
   return (
     <div className="bg-[#9ec8ba]">
