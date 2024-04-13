@@ -11,7 +11,3 @@
 .rsw-dd {
   @apply select scale-75 select-bordered w-full max-w-xs my-2;
 }
-/* 
-.btn {
-  @apply h-5 bg-slate-200 px-10 text-xs;
-} */
