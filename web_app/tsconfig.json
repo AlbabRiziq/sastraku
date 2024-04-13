@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/app/api/kategori/[id].js",
-    "src/app/create/page.jsx"
+    "src/app/create/page.tsx"
   ],
   "exclude": [
     "node_modules"

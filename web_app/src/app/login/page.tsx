@@ -1,45 +1,35 @@
 "use client";
 
+import Link from "next/link";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import "./login.css";
 import { useState } from "react";
-
-import "./signup.css";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function SignUp() {
-  const [pass, setPass] = useState("");
-  const [confirmPass, setConfirmPass] = useState("");
+function login() {
   const [username, setUsername] = useState("");
-  const [namaLengkap, setNamaLengkap] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSignUp = () => {
-    console.log("asd");
-    if (pass == confirmPass) {
-      axios({
-        url: "/api/signup",
-        method: "POST",
-        params: {
-          username: username,
-          password: pass,
-          nama_lengkap: namaLengkap,
-        },
-      })
-        .then((res) => {
-          toast.success("Username berhasil ditambahkan, silahkan login ulang", {
-            onClose: () => {
-              location.href = "/login";
-            },
-          });
-        })
-        .catch((err) => {
-          toast.error(err.response.data.message);
-          // console.log();
+  const handleLogin = () => {
+    axios({
+      url: "/api/login",
+      method: "POST",
+      params: {
+        username: username,
+        password: password,
+      },
+    })
+      .then((res) => {
+        toast.success("Login berhasil", {
+          onClose: () => {
+            location.href = "/";
+          },
         });
-      // console.log(process.env.);
-    } else {
-      toast.error("Pastikan konfirmasi password harus saama");
-    }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
   };
 
   return (
@@ -67,6 +57,11 @@ function SignUp() {
             </div>
             <div className="form-container">
               <div className="slide-controls">
+                {/* <input type="radio" name="slide" id="login" defaultChecked="" />
+                <Link href="/signup" id="login">
+                  Home
+                </Link>
+                <input type="radio" name="slide" id="signup" /> */}
                 <label htmlFor="login" className="slide login">
                   <a href="/login">
                     <strong>LOGIN</strong>
@@ -80,22 +75,13 @@ function SignUp() {
                 <div className="slider-tab" />
               </div>
               <div className="form-inner">
-                <form className="signup">
-                  <div className="field">
-                    <input
-                      type="text"
-                      placeholder="Nama Lengkap"
-                      name="nama_lengkap"
-                      required=""
-                      onChange={(e) => setNamaLengkap(e.target.value)}
-                    />
-                  </div>
+                <form action="/api/login" method="POST" className="login">
                   <div className="field">
                     <input
                       type="text"
                       placeholder="Username"
                       name="username"
-                      required=""
+                      required
                       onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
@@ -103,29 +89,22 @@ function SignUp() {
                     <input
                       type="password"
                       placeholder="Password"
-                      required=""
+                      required
                       name="password"
-                      onChange={(e) => setPass(e.target.value)}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <div className="field">
-                    <input
-                      type="password"
-                      placeholder="Konfirmasi password"
-                      required
-                      name="confirmPass"
-                      onChange={(e) => setConfirmPass(e.target.value)}
-                    />
+                  <div className="pass-link">
+                    <a href="#">Forgot password?</a>
                   </div>
                   <div className="field btn">
                     <div className="btn-layer" />
-                    <button
-                      type="button"
-                      className="btn"
-                      onClick={handleSignUp}
-                    >
-                      DAFTAR
+                    <button type="button" className="btn" onClick={handleLogin}>
+                      Login
                     </button>
+                  </div>
+                  <div className="signup-link">
+                    Not a member? <a href="/signup">Signup now</a>
                   </div>
                 </form>
               </div>
@@ -137,4 +116,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default login;

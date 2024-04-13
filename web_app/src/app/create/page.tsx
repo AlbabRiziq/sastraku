@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
 import {
@@ -24,7 +24,7 @@ function Post() {
   const [kategori, setKategori] = useState("");
   const [tema, setTema] = useState("");
   const [title, setTitle] = useState("");
-  const [isi, setIisi] = useState();
+  const [isi, setIisi] = useState("");
 
   useEffect(() => {
     axios.get("/api/kategori").then((res) => {
@@ -137,7 +137,7 @@ function Post() {
       <br />
       <br />
 
-      <Navbar onHandleChange={(e) => console.log(e)} />
+      <Navbar />
     </div>
   );
 }
