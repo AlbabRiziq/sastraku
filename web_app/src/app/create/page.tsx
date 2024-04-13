@@ -78,20 +78,26 @@ function Post() {
           className="select select-bordered w-full max-w-xs"
           onChange={(e) => setKategori(e.target.value)}
         >
-          {dataKategori.map((item) => (
-            <option key={item.id} value={item.category_id}>
+          <option>
+            Pilih Kategori
+          </option>
+          {dataKategori.map((item, index) => (
+            <option key={index} value={item.category_id}>
               {item.category_name}
             </option>
           ))}
         </select>
         <br />
         <br />
-        <label htmlFor="kategori">MASUKAN TEMA</label>
+        <label>MASUKAN TEMA</label>
         <br />
         <select
           onChange={(e) => setTema(e.target.value)}
           className="select select-bordered w-full max-w-xs"
         >
+          <option>
+            Pilih Tema
+          </option>
           {dataTema.map((item, index) => (
             <option key={index} value={item.sub_category_id}>
               {item.sub_category_name}
