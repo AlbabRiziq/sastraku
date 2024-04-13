@@ -3,6 +3,7 @@
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
+import validator from "validator";
 
 import "./signup.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,33 +13,39 @@ function SignUp() {
   const [confirmPass, setConfirmPass] = useState("");
   const [username, setUsername] = useState("");
   const [namaLengkap, setNamaLengkap] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSignUp = () => {
-    console.log("asd");
-    if (pass == confirmPass) {
-      axios({
-        url: "/api/signup",
-        method: "POST",
-        params: {
-          username: username,
-          password: pass,
-          nama_lengkap: namaLengkap,
-        },
-      })
-        .then((res) => {
-          toast.success("Username berhasil ditambahkan, silahkan login ulang", {
-            onClose: () => {
-              location.href = "/login";
-            },
-          });
+    if (!validator.isEmail(email)) {
+      toast.error("Email tidak valid");
+      return;
+    } {
+      if (pass == confirmPass) {
+        axios({
+          url: "/api/signup",
+          method: "POST",
+          params: {
+            username: username,
+            password: pass,
+            nama_lengkap: namaLengkap,
+            email: email,
+          },
         })
-        .catch((err) => {
-          toast.error(err.response.data.message);
-          // console.log();
-        });
-      // console.log(process.env.);
-    } else {
-      toast.error("Pastikan konfirmasi password harus saama");
+          .then((res) => {
+            toast.success("Username berhasil ditambahkan, silahkan login ulang", {
+              onClose: () => {
+                location.href = "/login";
+              },
+            });
+          })
+          .catch((err) => {
+            toast.error(err.response.data.message);
+            // console.log();
+          });
+        // console.log(process.env.);
+      } else {
+        toast.error("Pastikan konfirmasi password harus saama");
+      }
     }
   };
 
@@ -88,6 +95,15 @@ function SignUp() {
                       name="nama_lengkap"
                       required
                       onChange={(e) => setNamaLengkap(e.target.value)}
+                    />
+                  </div>
+                  <div className="field">
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      name="email"
+                      required
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="field">

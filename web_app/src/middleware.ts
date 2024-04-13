@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { KJUR } from 'jsrsasign';
+import User from './Models/User';
 
-
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
 
 
 
@@ -29,6 +29,7 @@ export function middleware(req: NextRequest) {
             if (!isValid) {
                 return NextResponse.redirect(new URL("/login", req.url))
             } else {
+
                 return NextResponse.next()
             }
         } else {

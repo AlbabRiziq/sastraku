@@ -13,6 +13,8 @@ export async function POST(req: Request, res: Response) {
   const namaLengkap = searchParams.get("nama_lengkap")
   const username = searchParams.get("username")
   const passwd = searchParams.get("password")
+  const email = searchParams.get("email")
+
 
   const validatePasswd = validator.isLength(passwd, { min: 5 })
 
@@ -28,6 +30,8 @@ export async function POST(req: Request, res: Response) {
       username,
       nama_lengkap: namaLengkap,
       password: passwd,
+      email
+
 
 
     })
