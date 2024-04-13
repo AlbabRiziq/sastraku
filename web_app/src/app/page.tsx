@@ -1,29 +1,43 @@
+"use client"
+
 import { useEffect, useState } from "react";
 import Card from "../Components/Card/Card";
 import Navbar from "../Components/Navbar/Navbar";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from "axios";
-import Content from "../Models/Content";
-import dbConnect from "../lib/dbConnect";
+
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+
+// import 'swiper/css';
+import 'swiper/css/navigation';
 
 
 
-async function getAllPost() {
-  await dbConnect()
-
-  try {
-    const res = await Content.find()
-    return res
-  } catch (err) {
-    return
-  }
 
 
-}
+export default function Home() {
+
+  const [data, setData] = useState([])
 
 
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: '/api/post',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      setData(response.data.data)
+      // console.log();
 
-export default async function Home() {
-  const data: Object[] = await getAllPost()
+
+    }).catch((error) => {
+      console.log(error)
+
+    })
+  }, [])
 
 
   return (
@@ -31,25 +45,25 @@ export default async function Home() {
       <div className="carousel w-full">
 
 
+
+      </div>
+      <Swiper navigation={true} modules={[Navigation]} className="mySwiper ">
         {data.map((item: any, index) => {
           return (
-            <div id={`slide${index}`} className="carousel-item relative w-full" key={index}>
-              <Card
-                id={item.content_id}
-                title={item.content_title}
-                author={item.author}
-                desc={item.content_description}
-              />
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href={`#slide${index - 1}`} className="btn btn-circle bg-transparent">
-                </a>
-                <a href={`#slide${index + 1}`} className="btn btn-circle bg-transparent">
-                </a>
+            <SwiperSlide key={index}>
+              <div id={`slide${index}`} className="carousel-item relative w-full" key={index}>
+                <Card
+                  id={item.content_id}
+                  title={item.content_title}
+                  author={item.author}
+                  desc={item.content_description}
+                />
+
               </div>
-            </div>
+            </SwiperSlide>
           )
         })}
-      </div>
+      </Swiper>
       <Navbar />
     </div>
   );
