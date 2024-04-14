@@ -39,13 +39,6 @@ const uploadImage = async (file: any) => {
 
 export async function POST(req: NextRequest, res: NextResponse) {
     await dbConnect()
-    // const title = url.searchParams.get('content_title');
-    // const content = url.searchParams.get('value');
-    // const desc = url.searchParams.get('content_description');
-    // const category_id = url.searchParams.get('category_id');
-    // const sub_category_id = url.searchParams.get('category_id');
-
-    // let author: String;
 
     const data = req.formData()
 
