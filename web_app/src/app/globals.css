@@ -11,3 +11,34 @@
 .rsw-dd {
   @apply select scale-75 select-bordered w-full max-w-xs my-2;
 }
+
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+
+/*======================
+    404 page
+=======================*/
+.page_404 {
+  @apply px-0 py-10 w-screen h-screen bg-white flex items-center justify-center;
+}
+.page_404 img {
+  @apply w-full;
+}
+.four_zero_four_bg {
+  @apply bg-[url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble\_1.gif)] h-[400px] bg-center;
+}
+.four_zero_four_bg h1 {
+  @apply text-[80px];
+}
+.four_zero_four_bg h3 {
+  @apply text-[80px];
+}
+.link_404 {
+  @apply text-white inline-block mx-0 my-5 px-5 py-2.5 bg-[#092635] rounded-xl;
+}
+.contant_box_404 {
+  @apply mt-[-50px];
+}

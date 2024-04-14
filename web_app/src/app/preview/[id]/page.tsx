@@ -3,17 +3,26 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import dbConnect from "../../../lib/dbConnect";
 import Content from "../../../Models/Content";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 async function getData(id: string) {
     dbConnect()
 
     const res = await Content.findOne({ content_id: id })
 
+    // console.log(res);
+
     return res
 
 }
 export default async function Page({ params }: { params: { id: string } }) {
     const data = await getData(params.id)
+    if (!data) {
+        return notFound()
+    }
+
+
+
     const title: String = data.content_title
     const author: String = data.author
     const desc: String = data.content_description
