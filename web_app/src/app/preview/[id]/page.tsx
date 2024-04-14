@@ -4,6 +4,7 @@ import dbConnect from "../../../lib/dbConnect";
 import Content from "../../../Models/Content";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import type { Metadata, ResolvingMetadata } from 'next'
 
 async function getData(id: string) {
     dbConnect()
@@ -15,6 +16,33 @@ async function getData(id: string) {
     return res
 
 }
+
+
+
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+
+    const data = await getData(params.id)
+    if (!data) {
+        return notFound()
+    }
+
+    const title: String = data.content_title
+    const author: String = data.author
+    const desc: String = data.content_description
+    const coverImg = data.cover_url || `https://placehold.co/600x300?text=${title}`.replace(/ /g, "+")
+
+
+    return {
+        title: `${title} | ${author}`,
+        description: desc.slice(0, 20),
+        openGraph: {
+            images: coverImg,
+        },
+    }
+
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
     const data = await getData(params.id)
     if (!data) {
@@ -29,7 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
 
     const coverImg = data.cover_url || `https://placehold.co/600x300?text=${title}`.replace(/ /g, "+")
-    console.log(coverImg);
+
 
 
     return (
@@ -44,6 +72,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 <Link href={"/full/" + params.id}><p className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BACA</p></Link>
 
             </div>
+            <br /><br /><br /><br />
             <Navbar />
         </div>
     )
