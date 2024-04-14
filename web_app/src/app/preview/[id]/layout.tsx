@@ -23,11 +23,12 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     const title: String = data.content_title
     const author: String = data.author
     const desc: String = data.content_description
-    const coverImg = data.cover_url || `https://placehold.co/600x300?text=${title}`.replace(/ /g, "+")
+    const coverImg = data.cover_url != null ? [{ url: data.cover_url }] : [{ url: `https://placehold.co/600x300?text=${title}`.replace(/ /g, "+") }]
 
 
     return {
         title: `${title} | ${author}`,
+
         description: desc.slice(0, 20),
         openGraph: {
             images: coverImg,
