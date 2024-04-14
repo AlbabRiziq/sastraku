@@ -42,6 +42,10 @@ const contentSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  cover_url: {
+    type: String,
+    default: null,
+  }
 }).pre("save", function (next) {
   const contentId = Randomstring.generate(10);
   this.content_id = contentId;

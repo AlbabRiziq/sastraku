@@ -5,16 +5,59 @@ import { NextRequest, NextResponse } from "next/server";
 import User from "../../../Models/User";
 
 
+export const config = {
+    api: {
+        bodyParser: true,
+    }
+
+}
+
+
+const uploadImage = async (file: any) => {
+
+
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append("key", process.env.NEXT_PUBLIC_IMGAPI)
+
+    try {
+        const up = await fetch("https://api.imgbb.com/1/upload", {
+            method: "POST",
+            body: formData
+
+        })
+        const res = await up.json()
+        const imageUrl = res.data.url
+        const deleteUrl = res.data.delete_url
+
+        return { imageUrl: imageUrl, deleteUrl: deleteUrl }
+    } catch (err) {
+        return
+    }
+
+}
+
 export async function POST(req: NextRequest, res: NextResponse) {
     await dbConnect()
-    const url = new URL(req.url);
-    const title = url.searchParams.get('content_title');
-    const content = url.searchParams.get('value');
-    const desc = url.searchParams.get('content_description');
-    const category_id = url.searchParams.get('category_id');
-    const sub_category_id = url.searchParams.get('category_id');
+    // const title = url.searchParams.get('content_title');
+    // const content = url.searchParams.get('value');
+    // const desc = url.searchParams.get('content_description');
+    // const category_id = url.searchParams.get('category_id');
+    // const sub_category_id = url.searchParams.get('category_id');
+
+    // let author: String;
+
+    const data = req.formData()
+
+    const title = (await data).get('content_title')
+    const content = (await data).get('value')
+    const desc = (await data).get('content_description')
+    const category_id = (await data).get('category_id')
+    const sub_category_id = (await data).get('sub_category_id')
+    const file = (await data).get('file')
 
     let author: String;
+
 
     const cookie = req.cookies;
     const token = cookie.getAll("tkn")[0].value
@@ -24,8 +67,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
         return NextResponse.json({ message: "Token is not valid" }, {
             status: 400
         })
-
     }
+
+    const coverImg = file == null ? null : await uploadImage(file)
+    const coverImage = coverImg != null ? coverImg.imageUrl : null
 
     const user_data = await User.findOne({ user_id: verify.user_id })
     const user_id = user_data.user_id
@@ -39,12 +84,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
             value: content,
             category_id,
             sub_category_id,
-            author
+            author,
+            cover_url: coverImage
         })
 
         const content_id = data.content_id
 
-        return NextResponse.json({ message: "Konten berhasil dibuat" })
+        return NextResponse.json({
+            message: "Success",
+            id: content_id
+        })
     } catch (err) {
 
         console.log(err);
