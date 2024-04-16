@@ -11,15 +11,8 @@ import 'swiper/css';
 // import 'swiper/css';
 import 'swiper/css/navigation';
 
-
-
-
-
 export default function Home() {
-
   const [data, setData] = useState([])
-
-
   useEffect(() => {
     axios({
       method: 'get',
@@ -42,9 +35,6 @@ export default function Home() {
   return (
     <div className="bg-[#9ec8ba] relative">
       <div className="carousel w-full">
-
-        <h1></h1>
-
 
       </div>
       <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
