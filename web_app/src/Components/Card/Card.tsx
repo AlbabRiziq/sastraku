@@ -10,7 +10,7 @@ type CardProps = {
 
 function Card({ title, author, desc, id, img }: CardProps) {
   return (
-    <div className="card w-full  bg-base-100 shadow-xl bg-transparent border m-5 relative " >
+    <div className="card w-full  bg-base-100 shadow-xl bg-transparent border m-5 relative border-[#092635]">
       <div className="card-body p-7">
         <img src={img} alt="" className="w-full rounded-2xl" />
         <div>

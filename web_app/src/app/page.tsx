@@ -34,8 +34,8 @@ export default function Home() {
 
   return (
     <div className="bg-[#9ec8ba] relative">
-      <div className="carousel w-full">
-
+      <div className="carousel w-full px-5">
+        <h1 className="mt-5 font font-bold text-xl">REKOMENDASI</h1>
       </div>
       <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
 
