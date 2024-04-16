@@ -42,3 +42,6 @@
 .contant_box_404 {
   @apply mt-[-50px];
 }
+.vertical-scroll::-webkit-scrollbar-track {
+  @apply bg-red-950;
+}

@@ -5,65 +5,52 @@ import Card from "../Components/Card/Card";
 import Navbar from "../Components/Navbar/Navbar";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from "axios";
-
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 
-// import 'swiper/css';
 import 'swiper/css/navigation';
 
-
-
-
-
 export default function Home() {
-
-  const [data, setData] = useState([])
-
-
+  const [recommend, setRecommend] = useState([])
   useEffect(() => {
     axios({
       method: 'get',
-      url: '/api/post',
+      url: '/api/recommend',
       headers: {
         'Content-Type': 'application/json'
       }
     }).then((response) => {
-      setData(response.data.data)
-      // console.log();
-
+      setRecommend(response.data.data)
 
     }).catch((error) => {
       console.log(error)
-
     })
   }, [])
 
 
   return (
-    <div className="bg-[#9ec8ba]">
-      <div className="carousel w-full">
-
-
-
+    <div className="bg-[#9ec8ba] relative">
+      <div className="carousel w-full px-5">
+        <h1 className="mt-5 font font-bold text-xl">REKOMENDASI</h1>
       </div>
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper ">
-        {data.map((item: any, index) => {
+      <div className="vertical-scroll scrollbar-track-rounded-full w-screen overflow-x-scroll flex scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-thumb-rounded-full scrollbar-track-[rgba(0, 0, 0, 0)] ">
+        {recommend.map((item: any, index) => {
           return (
-            <SwiperSlide key={index}>
-              <div id={`slide${index}`} className="carousel-item relative w-full" key={index}>
-                <Card
-                  id={item.content_id}
-                  title={item.content_title}
-                  author={item.author}
-                  desc={item.content_description}
-                />
 
-              </div>
-            </SwiperSlide>
+            <div id={`slide${index}`} className="carousel-item relative" key={index}>
+              <Card
+                id={item.content_id}
+                title={item.content_title}
+                author={item.author}
+                desc={item.content_description}
+                img={item.cover_url}
+              />
+
+            </div>
+
           )
         })}
-      </Swiper>
+      </div>
       <Navbar />
     </div>
   );
