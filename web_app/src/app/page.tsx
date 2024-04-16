@@ -11,16 +11,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function Home() {
-  const [data, setData] = useState([])
+  const [recommend, setRecommend] = useState([])
   useEffect(() => {
     axios({
       method: 'get',
-      url: '/api/post',
+      url: '/api/recommend',
       headers: {
         'Content-Type': 'application/json'
       }
     }).then((response) => {
-      setData(response.data.data)
+      setRecommend(response.data.data)
 
     }).catch((error) => {
       console.log(error)
@@ -34,7 +34,7 @@ export default function Home() {
         <h1 className="mt-5 font font-bold text-xl">REKOMENDASI</h1>
       </div>
       <div className="vertical-scroll scrollbar-track-rounded-full w-screen overflow-x-scroll flex scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-thumb-rounded-full scrollbar-track-[rgba(0, 0, 0, 0)] ">
-        {data.map((item: any, index) => {
+        {recommend.map((item: any, index) => {
           return (
 
             <div id={`slide${index}`} className="carousel-item relative" key={index}>
