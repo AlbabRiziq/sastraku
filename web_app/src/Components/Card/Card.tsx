@@ -5,12 +5,14 @@ type CardProps = {
   author: string;
   desc: string;
   id: string;
+  img: string
 };
 
-function Card({ title, author, desc, id }: CardProps) {
+function Card({ title, author, desc, id, img }: CardProps) {
   return (
-    <div className="card w-full  bg-base-100 shadow-xl bg-transparent border m-5" >
+    <div className="card w-full  bg-base-100 shadow-xl bg-transparent border m-5 relative " >
       <div className="card-body">
+        <img src={img} alt="" />
         <h2 className="card-title -mb-3">{title}</h2>
         <h4 className="italic">{author}</h4>
         <p>{desc.slice(0, 100) + "........"}</p>

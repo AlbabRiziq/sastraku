@@ -6,7 +6,7 @@ import createImg from '../../assets/img/create.svg'
 
 function Navbar() {
   return (
-    <div className="fixed bottom-0 right-0 w-screen left-0 text-white flex items-center justify-center">
+    <div className="fixed bottom-0 right-0 w-screen left-0 text-white flex items-center justify-center z-50">
       <div className="bg-[#092635] w-full flex items-center justify-evenly p-5 rounded-t-lg">
         <a href="/">
           <Image

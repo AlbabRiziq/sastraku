@@ -30,7 +30,7 @@ export default function Home() {
       }
     }).then((response) => {
       setData(response.data.data)
-      // console.log();
+      console.log(response.data.data);
 
 
     }).catch((error) => {
@@ -41,7 +41,7 @@ export default function Home() {
 
 
   return (
-    <div className="bg-[#9ec8ba]">
+    <div className="bg-[#9ec8ba] relative">
       <div className="carousel w-full">
 
 
@@ -57,6 +57,7 @@ export default function Home() {
                   title={item.content_title}
                   author={item.author}
                   desc={item.content_description}
+                  img={item.cover_url}
                 />
 
               </div>
