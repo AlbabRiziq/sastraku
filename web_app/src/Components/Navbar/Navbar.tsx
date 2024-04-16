@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import homeImg from '../../assets/img/home.svg'
 import createImg from '../../assets/img/create.svg'
+import profileImg from '../../assets/img/profile.svg'
 
 
 function Navbar() {
@@ -18,6 +19,12 @@ function Navbar() {
           <Image
             alt='create'
             src={createImg}
+          />
+        </a>
+        <a href="/profile">
+          <Image
+            alt='create'
+            src={profileImg}
           />
         </a>
       </div>
