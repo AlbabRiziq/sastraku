@@ -5,8 +5,7 @@ import Card from "../Components/Card/Card";
 import Navbar from "../Components/Navbar/Navbar";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from "axios";
-
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 
 // import 'swiper/css';
@@ -44,13 +43,17 @@ export default function Home() {
     <div className="bg-[#9ec8ba] relative">
       <div className="carousel w-full">
 
+        <h1></h1>
 
 
       </div>
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper ">
+      <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
+
+        navigation
+      >
         {data.map((item: any, index) => {
           return (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} >
               <div id={`slide${index}`} className="carousel-item relative w-full" key={index}>
                 <Card
                   id={item.content_id}
