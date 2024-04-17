@@ -16,6 +16,7 @@ import {
 } from "react-simple-wysiwyg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { set } from "mongoose";
 
 
 function Post() {
@@ -27,6 +28,18 @@ function Post() {
   const [title, setTitle] = useState("");
   const [isi, setIisi] = useState("");
   const [file, setFile] = useState<File>();
+
+  const [val, setVal] = useState("");
+  const [pasted, setPasted] = useState(false);
+
+  const handleChange = e => {
+    if (!pasted) {
+      setVal(e.target.value);
+    }
+    setPasted(false);
+  };
+
+
 
   const handleFile = (e: FileList) => {
     setFile(e[0]);
@@ -79,6 +92,11 @@ function Post() {
         autoClose: 2000
       })
     })
+  }
+
+  const handlePaste = (e: any) => {
+    console.log(isi);
+
   }
 
 
@@ -154,9 +172,8 @@ function Post() {
             className="bg-gray-500 bg"
             value={isi}
             name="value"
-            onChange={(e) => {
-              setIisi(e.target.value);
-            }}
+            onChange={e => handleChange(e)}
+
           >
             <Toolbar>
               <BtnUndo />
@@ -166,7 +183,7 @@ function Post() {
               <BtnClearFormatting />
               <BtnStyles />
             </Toolbar>
-          </Editor>
+          </Editor >
         </EditorProvider>
       </div>
       <button className="btn mt-5" onClick={handlePost}>
