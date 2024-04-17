@@ -21,12 +21,12 @@ function Navbar() {
             src={createImg}
           />
         </a>
-        <a href="/profile">
+        {/* <a href="/profile">
           <Image
             alt='create'
             src={profileImg}
           />
-        </a>
+        </a> */}
       </div>
     </div>
   );
