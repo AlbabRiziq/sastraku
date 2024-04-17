@@ -16,6 +16,7 @@ import {
 } from "react-simple-wysiwyg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { set } from "mongoose";
 
 
 function Post() {
@@ -27,8 +28,6 @@ function Post() {
   const [title, setTitle] = useState("");
   const [isi, setIisi] = useState("");
   const [file, setFile] = useState<File>();
-
-
 
   const handleFile = (e: FileList) => {
     setFile(e[0]);
@@ -84,11 +83,17 @@ function Post() {
   }
 
 
+  const paste = async () => {
+    setIisi(isi + await navigator.clipboard.readText())
+
+  }
+
+
   return (
-    <div className="w-screen p-5 flex flex-col">
+    <div className="w-screen p-5 flex flex-col ">
       <ToastContainer />
       <h1 className="font-bold text-2xl">BUAT KARYA</h1>
-      <form className="mt-5" encType="multipart/form">
+      <form className="mt-5 overflow-x-hidden" encType="multipart/form">
         <label htmlFor="title">MASUKAN JUDUL KARYA</label>
         <br />
         <input
@@ -156,8 +161,9 @@ function Post() {
             className="bg-gray-500 bg"
             value={isi}
             name="value"
-            onChange={(e) => setIisi(e.target.value)}
-
+            onChange={(e) => {
+              setIisi(e.target.value);
+            }}
           >
             <Toolbar>
               <BtnUndo />
@@ -166,19 +172,20 @@ function Post() {
               <BtnBold />
               <BtnClearFormatting />
               <BtnStyles />
+              <button className="btn bg-[#092635] text-white" onClick={paste}>TEMPEL SALINAN</button>
             </Toolbar>
-          </Editor >
+          </Editor>
         </EditorProvider>
-
       </div>
       <button className="btn mt-5" onClick={handlePost}>
         SELESAI
       </button>
       <br />
       <br />
+      <br />
 
+      <br /><br /><br /><br />
       <Navbar />
-
     </div>
   );
 }
