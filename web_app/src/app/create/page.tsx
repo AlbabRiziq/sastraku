@@ -28,16 +28,6 @@ function Post() {
   const [isi, setIisi] = useState("");
   const [file, setFile] = useState<File>();
 
-  const [val, setVal] = useState("");
-  const [pasted, setPasted] = useState(false);
-
-  // const handleChange = e => {
-  //   if (!pasted) {
-  //     setVal(e.target.value);
-  //   }
-  //   setPasted(false);
-  // };
-
 
 
   const handleFile = (e: FileList) => {
@@ -92,8 +82,6 @@ function Post() {
       })
     })
   }
-
-
 
 
   return (
@@ -181,15 +169,16 @@ function Post() {
             </Toolbar>
           </Editor >
         </EditorProvider>
+
       </div>
       <button className="btn mt-5" onClick={handlePost}>
         SELESAI
       </button>
       <br />
       <br />
-      <br />
 
       <Navbar />
+
     </div>
   );
 }
