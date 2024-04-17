@@ -33,7 +33,7 @@ export default function Home() {
       <div className="carousel w-full px-5">
         <h1 className="mt-5 font font-bold text-xl">REKOMENDASI</h1>
       </div>
-      <div className="vertical-scroll scrollbar-track-rounded-full w-screen overflow-x-scroll flex scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-thumb-rounded-full scrollbar-track-[rgba(0, 0, 0, 0)] ">
+      <div className="vertical-scroll scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-slate overflow-x-scroll flex scrollbar-track-[rgba(0, 0, 0, 0)] ">
         {recommend.map((item: any, index) => {
           return (
 
