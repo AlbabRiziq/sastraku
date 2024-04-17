@@ -16,7 +16,6 @@ import {
 } from "react-simple-wysiwyg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { set } from "mongoose";
 
 
 function Post() {
@@ -32,12 +31,12 @@ function Post() {
   const [val, setVal] = useState("");
   const [pasted, setPasted] = useState(false);
 
-  const handleChange = e => {
-    if (!pasted) {
-      setVal(e.target.value);
-    }
-    setPasted(false);
-  };
+  // const handleChange = e => {
+  //   if (!pasted) {
+  //     setVal(e.target.value);
+  //   }
+  //   setPasted(false);
+  // };
 
 
 
@@ -94,10 +93,7 @@ function Post() {
     })
   }
 
-  const handlePaste = (e: any) => {
-    console.log(isi);
 
-  }
 
 
   return (
@@ -172,7 +168,7 @@ function Post() {
             className="bg-gray-500 bg"
             value={isi}
             name="value"
-            onChange={e => handleChange(e)}
+            onChange={(e) => setIisi(e.target.value)}
 
           >
             <Toolbar>
