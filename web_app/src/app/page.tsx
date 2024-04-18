@@ -2,13 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Card from "../Components/Card/Card";
-import Navbar from "../Components/Navbar/Navbar";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from "axios";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import 'swiper/css';
 
-import 'swiper/css/navigation';
 
 export default function Home() {
   const [recommend, setRecommend] = useState([])
@@ -21,11 +16,11 @@ export default function Home() {
       }
     }).then((response) => {
       setRecommend(response.data.data)
-
     }).catch((error) => {
       console.log(error)
     })
   }, [])
+
 
 
   return (
@@ -35,6 +30,8 @@ export default function Home() {
       </div>
       <div className="vertical-scroll scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-slate overflow-x-scroll flex scrollbar-track-[rgba(0, 0, 0, 0)] ">
         {recommend.map((item: any, index) => {
+
+
           return (
 
             <div id={`slide${index}`} className="carousel-item relative" key={index}>
@@ -44,6 +41,7 @@ export default function Home() {
                 author={item.author}
                 desc={item.content_description}
                 img={item.cover_url}
+                user_id={item.user_id}
               />
 
             </div>

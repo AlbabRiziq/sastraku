@@ -2,25 +2,45 @@ import Link from "next/link";
 import dbConnect from "../../../lib/dbConnect"
 import Content from "../../../Models/Content"
 import User from "../../../Models/User";
+import type { Metadata } from 'next'
 
-export default async function Page({ params }: { params: { username: string } }) {
+
+
+
+async function getData(params) {
     await dbConnect()
     const user_data: any = await User.findOne({ username: params.username })
-    const user_id = user_data.user_id
 
+    const user_id = user_data.user_id
+    const namaLengkap = user_data.nama_lengkap
     const posts_data = await Content.find({ user_id: user_id })
     const total_karya = posts_data.length
 
-    console.log(total_karya);
 
 
+    return { user_data, posts_data, total_karya, namaLengkap: namaLengkap }
+}
+
+
+
+export async function generateMetadata({ params }: { params: { username: string } }) {
+
+    const { namaLengkap } = await getData(params)
+
+    return {
+        title: `PROFIL ${namaLengkap.toUpperCase()} | @${params.username}`
+    }
+}
+export default async function Page({ params }: { params: { username: string } }) {
+
+    const { user_data, posts_data, total_karya } = await getData(params)
 
 
     return (
         <main className="flex flex-col items-center justify-center p-5 text-[#092635]">
             <h1 className="font-bold text-xl">RIZIQ LILI ULIL ALBAB</h1>
             <h2 className="italic">@{params.username}</h2>
-            <p className="italic text-center mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, alias.</p>
+            <p className="italic text-center mt-5">{user_data.bio != null ? user_data.bio : "-"}</p>
             <a className="btn mt-2 bg-[#092635] text-white px-9">
                 TOTAL KARYA
                 <div className="badge">{total_karya}</div>
@@ -29,8 +49,6 @@ export default async function Page({ params }: { params: { username: string } })
             <div className="mt-5 flex flex-col items-center pt-5">
                 <h1 className="font-bold text-xl">KARYA</h1>
                 <div className="mt-10 flex flex-wrap items-center justify-evenly gap-4">
-
-
                     {
                         posts_data.map((post: any, index: number) => {
                             const desc: String = post.content_description
@@ -46,10 +64,8 @@ export default async function Page({ params }: { params: { username: string } })
                                     </div>
                                 </div>
                             )
-
                         })
                     }
-
                 </div>
             </div>
             <br /><br /><br /><br /><br /><br />
