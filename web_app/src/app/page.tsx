@@ -21,6 +21,19 @@ export default function Home() {
     }).catch((error) => {
       console.log(error)
     })
+
+    axios({
+      method: 'get',
+      url: '/api/post',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      setAll(response.data.data)
+    }).catch((error) => {
+      console.log(error)
+
+    })
   }, [])
 
 
@@ -56,7 +69,7 @@ export default function Home() {
           <h1 className="mt-5 font font-bold text-2xl">SEMUA</h1>
 
           <div className="flex flex-wrap items-center justify-center gap-5 mt-10">
-            {recommend.map((post: any, index) => {
+            {all.map((post: any, index) => {
 
 
               return (

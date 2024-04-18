@@ -111,7 +111,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         }
     } else {
         try {
-            const post = await Content.find()
+            const post = await Content.find({})
             return NextResponse.json({ message: "Success", data: post })
 
         } catch (err) {
