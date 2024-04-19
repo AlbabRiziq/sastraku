@@ -21,7 +21,7 @@ export async function POST(req: Request, res: Response) {
             "bio": bio
         })
         return NextResponse.json({
-            message: "Profile page"
+            message: "Success"
         })
     } catch (err) {
         return NextResponse.json({
