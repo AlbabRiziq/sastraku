@@ -36,8 +36,6 @@ export default function Home() {
     })
   }, [])
 
-
-
   return (
     <div className="bg-[#9ec8ba] relative mb-60">
       <div><div className="carousel w-full px-5">
@@ -45,9 +43,8 @@ export default function Home() {
       </div>
         <div className="vertical-scroll scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-slate overflow-x-scroll flex scrollbar-track-[rgba(0, 0, 0, 0)] ">
           {recommend.map((item: any, index) => {
-
-
             return (
+
 
               <div id={`slide${index}`} className="carousel-item relative" key={index}>
                 <Card
@@ -58,9 +55,7 @@ export default function Home() {
                   img={item.cover_url}
                   user_id={item.user_id}
                 />
-
               </div>
-
             )
           })}
         </div>
@@ -70,13 +65,8 @@ export default function Home() {
 
           <div className="flex flex-wrap items-center justify-center gap-5 mt-10">
             {all.map((post: any, index) => {
-
-
               return (
-
                 <div id={`slide${index}`} className="" key={index}>
-
-
 
                   <div key={index} className="card card-compact w-60 bg-base-100 shadow-xl">
                     <figure><img src={post.cover_url != null ? post.cover_url : `https://placehold.co/600x300?text=${post.content_title}`.replace(/ /g, "+")} alt="Shoes" /></figure>
@@ -89,11 +79,9 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
               )
             })}
           </div>
-
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ async function getData(params) {
     const total_karya = posts_data.length
 
 
+    // console.log(user_data);
 
     return { user_data, posts_data, total_karya, namaLengkap: namaLengkap }
 }

@@ -16,6 +16,11 @@ function SignUp() {
   const [email, setEmail] = useState("");
 
   const handleSignUp = () => {
+
+    const toastID = toast.loading("Tunggu sebentar....", {
+
+    });
+
     if (!validator.isEmail(email)) {
       toast.error("Email tidak valid");
       return;
@@ -32,19 +37,33 @@ function SignUp() {
           },
         })
           .then((res) => {
-            toast.success("Username berhasil ditambahkan, silahkan login ulang", {
+            toast.update(toastID, {
+              render: "Username berhasil ditambahkan, silahkan login ulang",
+              type: "success",
+              autoClose: 1000,
+              isLoading: false,
               onClose: () => {
                 location.href = "/login";
               },
             });
           })
           .catch((err) => {
-            toast.error(err.response.data.message);
+            toast.update(toastID, {
+              render: err.response.data.message,
+              isLoading: false,
+              type: "error",
+              autoClose: 3000,
+            });
             // console.log();
           });
         // console.log(process.env.);
       } else {
-        toast.error("Pastikan konfirmasi password harus saama");
+        toast.update(toastID, {
+          render: "Password tidak sama",
+          isLoading: false,
+          type: "error",
+          autoClose: 3000,
+        })
       }
     }
   };
