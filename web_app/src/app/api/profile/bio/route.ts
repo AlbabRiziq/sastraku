@@ -11,7 +11,8 @@ export async function POST(req: Request, res: Response) {
 
     const cookie = cookies()
     const token = cookie.get("tkn").value
-    const userID = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY)
+    let userID = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY)
+    userID = userID.user_id
 
     if (bio !== null) {
         try {
@@ -20,20 +21,28 @@ export async function POST(req: Request, res: Response) {
             }, {
                 "bio": bio
             })
+            console.log(updateBio);
             return NextResponse.json({
                 message: "Success"
             })
+
         } catch (err) {
+            console.log(err);
+
             return NextResponse.json({
-                message: "ERROR"
+                message: "ERROR1"
             }, {
                 status: 404
             })
         }
+    } else {
+        return NextResponse.json({
+            message: "ERROR"
+        }, {
+            status: 404
+        })
     }
 
-    return NextResponse.json({
-        message: "TES"
-    })
+
 
 }

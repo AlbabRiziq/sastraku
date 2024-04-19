@@ -3,15 +3,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Profile() {
 
     const [bio, setBio] = useState<String>("")
 
 
+
+
     useEffect(() => {
 
-        const toastId = toast.loading('TUNGGU SEBENTAR...');
         axios({
             method: 'POST',
             url: '/api/profile',
@@ -19,39 +21,41 @@ function Profile() {
                 'Content-Type': 'application/json'
             }
         }).then((response) => {
-            console.log(response.data)
-            toast.update(toastId, {
-                render: "Berhasil mengubah bio",
-                type: "success",
-                isLoading: false,
-            })
         }).catch((error) => {
-            console.log(error)
-
-            toast.update(toastId, {
-                render: "Gagal mengubah bio",
-                type: "error",
-                isLoading: false,
-            })
         })
     }, [])
 
     const updateBio = () => {
+
+        const toastID = toast.loading('Tunggu sebentar', { isLoading: false });
+
         axios({
             method: 'POST',
             url: '/api/profile/bio',
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: {
+            params: {
                 bio: bio
             }
         }).then((response) => {
             console.log(response.data)
+            toast.update(toastID, {
+                render: "Berhasil update bio",
+                type: "success",
+                autoClose: 3000
+            });
         }).catch((error) => {
             console.log(error)
+            toast.update(toastID, {
+                render: "Gagal update bio",
+                type: "error",
+                autoClose: 3000
+            });
         })
     }
+
+
 
     return (
         <main className="flex items-center justify-center w-screen flex-col">
