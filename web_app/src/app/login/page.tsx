@@ -94,9 +94,9 @@ function login() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <div className="pass-link">
+                  {/* <div className="pass-link">
                     <a href="#">Forgot password?</a>
-                  </div>
+                  </div> */}
                   <div className="field btn">
                     <div className="btn-layer" />
                     <button type="button" className="btn" onClick={handleLogin}>

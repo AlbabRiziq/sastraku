@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import homeImg from '../../assets/img/home.svg'
 import createImg from '../../assets/img/create.svg'
-
+import profileImg from '../../assets/img/profile.svg'
 
 function Navbar() {
   return (
@@ -20,12 +20,12 @@ function Navbar() {
             src={createImg}
           />
         </a>
-        {/* <a href="/profile">
+        <a href="/profile">
           <Image
             alt='create'
             src={profileImg}
           />
-        </a> */}
+        </a>
       </div>
     </div>
   );
