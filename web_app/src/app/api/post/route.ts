@@ -93,9 +93,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 }
 
 export async function GET(req: NextRequest, res: NextResponse) {
-
     await dbConnect()
-
     const url: URL = new URL(req.url);
     const id_post: String = url.searchParams.get('id_post');
 
@@ -113,7 +111,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
         try {
             const post = await Content.find({})
             return NextResponse.json({ message: "Success", data: post })
-
         } catch (err) {
             return NextResponse.json({ message: "Konten tidak ditemukan" }, {
                 status: 400
