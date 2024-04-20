@@ -21,7 +21,6 @@ export async function POST(req: Request, res: Response) {
             }, {
                 "bio": bio
             })
-            console.log(updateBio);
             return NextResponse.json({
                 message: "Success"
             })

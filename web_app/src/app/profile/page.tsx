@@ -4,16 +4,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SquareBox from "../../Components/Card/Square";
 
 function Profile() {
 
     const [bio, setBio] = useState<String>("")
 
-
-
-
     useEffect(() => {
-
         axios({
             method: 'POST',
             url: '/api/profile',
@@ -26,9 +23,7 @@ function Profile() {
     }, [])
 
     const updateBio = () => {
-
         const toastID = toast.loading('Tunggu sebentar', { isLoading: false });
-
         axios({
             method: 'POST',
             url: '/api/profile/bio',
@@ -55,21 +50,24 @@ function Profile() {
         })
     }
 
-
-
     return (
-        <main className="flex items-center justify-center w-screen flex-col">
+        <main className="flex items-center w-screen flex-col p-3">
             <ToastContainer />
             <div className="text-center mt-5">
-                <h1 className="font-bold text-xl">RIZIQ LILI ULIL ALBAB</h1>
+                <h1 className="font-bold text-3xl">RIZIQ LILI ULIL ALBAB</h1>
                 <h3 className="italic">@albab</h3>
             </div>
             <div className="mt-5 text-center">
                 <textarea onChange={e => {
                     setBio(e.target.value)
-
                 }} className="textarea bg-[#9ec8ba] border border-[#092635] text-[#092635] w-48" placeholder="Bio" ></textarea><br />
                 <button onClick={updateBio} type="button" className="btn text-xs bg-[#092635] text-[#9ec8ba] " >UPDATE BIO</button>
+            </div>
+            <div className="mt-10">
+                <h1 className="font-bold text-2xl">STATISTIK</h1>
+                <section>
+                    <SquareBox title="TWEET" value="100" />
+                </section>
             </div>
         </main>
     );
