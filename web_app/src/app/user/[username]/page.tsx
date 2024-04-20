@@ -2,8 +2,6 @@ import Link from "next/link";
 import dbConnect from "../../../lib/dbConnect"
 import Content from "../../../Models/Content"
 import User from "../../../Models/User";
-import type { Metadata } from 'next'
-
 
 
 
@@ -21,8 +19,6 @@ async function getData(params) {
 
     return { user_data, posts_data, total_karya, namaLengkap: namaLengkap }
 }
-
-
 
 export async function generateMetadata({ params }: { params: { username: string } }) {
 
