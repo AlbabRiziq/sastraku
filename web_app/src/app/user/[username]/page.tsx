@@ -34,12 +34,12 @@ export async function generateMetadata({ params }: { params: { username: string 
 }
 export default async function Page({ params }: { params: { username: string } }) {
 
-    const { user_data, posts_data, total_karya } = await getData(params)
+    const { user_data, posts_data, total_karya, namaLengkap } = await getData(params)
 
 
     return (
         <main className="flex flex-col items-center justify-center p-5 text-[#092635]">
-            <h1 className="font-bold text-xl">RIZIQ LILI ULIL ALBAB</h1>
+            <h1 className="font-bold text-xl">{namaLengkap}</h1>
             <h2 className="italic">@{params.username}</h2>
             <p className="italic text-center mt-5">{user_data.bio != null ? user_data.bio : "-"}</p>
             <a className="btn mt-2 bg-[#092635] text-white px-9">
