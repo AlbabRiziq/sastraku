@@ -4,10 +4,6 @@ import jwt from 'jsonwebtoken'
 import { NextRequest, NextResponse } from "next/server";
 import User from "../../../Models/User";
 
-
-
-
-
 const uploadImage = async (file: any) => {
 
 
@@ -93,7 +89,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
 }
 
 export async function GET(req: NextRequest, res: NextResponse) {
-
     await dbConnect()
 
     const url: URL = new URL(req.url);
