@@ -11,6 +11,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     const recommend = await Content.find({}, {}, { sort: { "time": -1 }, limit: 5 })
 
-    return NextResponse.json({ message: "Success", data: recommend })
 
+
+    return NextResponse.json({ message: "Success", data: recommend })
 }

@@ -25,23 +25,35 @@ export async function POST(req: Request, res: Response) {
 
   if (userN == null) {
     const user_id = randomstring.generate(8)
-    const data = await User.create({
-      user_id: user_id,
-      username,
-      nama_lengkap: namaLengkap,
-      password: passwd,
-      email
+    try {
+      const data = await User.create({
+        user_id: user_id,
+        username,
+        nama_lengkap: namaLengkap,
+        password: passwd,
+        email
 
 
 
-    })
-    return NextResponse.json({
-      message: "username berhasil ditambahkan",
-      data: {
-        nama_lengkap: data.nama_lengkap,
-        username: data.username
+      })
+      return NextResponse.json({
+        message: "username berhasil ditambahkan",
+        data: {
+          nama_lengkap: data.nama_lengkap,
+          username: data.username
+        }
+      })
+    } catch (err) {
+
+      if (err.message.includes("email")) {
+        return NextResponse.json({
+          message: "Email sudah digunakan"
+        }, {
+          status: 400
+        })
       }
-    })
+
+    }
 
   } else {
     return NextResponse.json({

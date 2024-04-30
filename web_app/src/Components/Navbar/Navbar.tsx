@@ -4,7 +4,6 @@ import homeImg from '../../assets/img/home.svg'
 import createImg from '../../assets/img/create.svg'
 import profileImg from '../../assets/img/profile.svg'
 
-
 function Navbar() {
   return (
     <div className="fixed bottom-0 right-0 w-screen left-0 text-white flex items-center justify-center z-50">

@@ -29,18 +29,12 @@ export default async function Page({ params }: { params: { id: string } }) {
     console.log(typeof content);
 
 
-    // const parse = dynamic(() => import("html-react-parser"), {
-    //     ssr: false
-    // });
-
-
-
 
     return (
         <div className="pb-24">
             <div className="text-center">
                 <h1 className="mt-5 text-[#092635] font-bold text-lg">{title.toUpperCase()}</h1>
-                <h3 className="italic">{author.toLocaleUpperCase()}</h3>
+                <h3 className="italic mb-10">{author.toLocaleUpperCase()}</h3>
                 <div className={montserrat.className}>
                     {parse(content)}
                 </div>

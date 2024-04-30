@@ -10,6 +10,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Copy from "../../../Components/Copy/Copy";
+import { set } from "mongoose";
 
 
 
@@ -67,6 +68,7 @@ export default function Page({ params }: { params: { id: string } }) {
     const [author, setAuthor] = useState<string>("");
     const [desc, setDesc] = useState<string>("");
     const [coverImg, setCoverImg] = useState<string>("");
+    const [userId, setUserID] = useState<string>("");
 
     useEffect(() => {
         if (data) {
@@ -74,6 +76,7 @@ export default function Page({ params }: { params: { id: string } }) {
             setAuthor(data.author);
             setDesc(data.content_description);
             setCoverImg(data.cover_url || `https://placehold.co/600x300?text=${data.content_title}`.replace(/ /g, "+"));
+            setUserID(data.user_id);
         }
     }, [data]);
 
@@ -83,8 +86,8 @@ export default function Page({ params }: { params: { id: string } }) {
         <div className="bg-[#9ec8ba] w-screen">
 
             <div className="p-5">
-                <h1 className="font-bold text-[#092635] text-2xl">{title.toUpperCase()}</h1>
-                <p className="italic text-xs">{author.toUpperCase()}</p>
+                <h1 className="font-bold text-[#092635] text-3xl">{title.toUpperCase()}</h1>
+                <a className="italic text-sm underline" href={"/user?user_id=" + userId} >{author.toUpperCase()}</a>
                 <img src={coverImg || `https://placehold.co/600x250?text=${title}`.replace(/ /g, "+")} alt="coverImage" className="w-full h-[300px] mt-5 rounded-lg object-cover" />
                 {/* <img src={coverImg} alt="coverImage" className="w-full mt-5 rounded-lg" /> */}
                 <p className="text-sm mt-10 text-justify">{desc}</p>
@@ -94,7 +97,7 @@ export default function Page({ params }: { params: { id: string } }) {
             <br /><br /><br /><br />
 
             <Navbar />
-        </div>
+        </div >
     )
 
 }
