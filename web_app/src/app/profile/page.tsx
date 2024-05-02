@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 function Profile() {
 
     const [bio, setBio] = useState<String>("")
+    const [username, setUsername] = useState<String>("")
+    const [namaLengkap, setNamaLengkap] = useState<String>("")
 
 
 
@@ -15,12 +17,15 @@ function Profile() {
     useEffect(() => {
 
         axios({
-            method: 'POST',
+            method: 'GET',
             url: '/api/profile',
             headers: {
                 'Content-Type': 'application/json'
             }
         }).then((response) => {
+            setUsername(response.data.username)
+            setNamaLengkap(response.data.nama_lengkap)
+
         }).catch((error) => {
         })
     }, [])
@@ -28,6 +33,8 @@ function Profile() {
     const updateBio = () => {
 
         const toastID = toast.loading('Tunggu sebentar', { isLoading: false });
+
+
 
         axios({
             method: 'POST',
@@ -61,8 +68,8 @@ function Profile() {
         <main className="flex items-center justify-center w-screen flex-col">
             <ToastContainer />
             <div className="text-center mt-5">
-                <h1 className="font-bold text-xl">RIZIQ LILI ULIL ALBAB</h1>
-                <h3 className="italic">@albab</h3>
+                <h1 className="font-bold text-xl">{namaLengkap}</h1>
+                <h3 className="italic">@{username}</h3>
             </div>
             <div className="mt-5 text-center">
                 <textarea onChange={e => {

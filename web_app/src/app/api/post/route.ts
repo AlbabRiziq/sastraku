@@ -4,10 +4,6 @@ import jwt from 'jsonwebtoken'
 import { NextRequest, NextResponse } from "next/server";
 import User from "../../../Models/User";
 
-
-
-
-
 const uploadImage = async (file: any) => {
 
 
