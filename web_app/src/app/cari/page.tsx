@@ -82,7 +82,7 @@ function Page() {
                 </section>
             ) : (
                 <div className="mt-10 flex gap-3">
-                    {result.length == 0 ? (
+                    {result[0] == undefined || result[0] == "" ? (
                         <div className="text-center w-full">
                             <h1 className="font-bold">KARYA TIDAK DITEMUKAN</h1>
                         </div>
