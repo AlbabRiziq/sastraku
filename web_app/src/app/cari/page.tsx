@@ -4,6 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 // import {  } from "next/router";
+import { Suspense } from 'react'
 import { useCallback, useEffect, useState } from "react";
 
 function Page() {
