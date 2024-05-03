@@ -10,8 +10,10 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     const cookie = cookies()
     const token = cookie.get("tkn").value
+
     let userID = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY)
     userID = userID.user_id
+
 
 
     try {

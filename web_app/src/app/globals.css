@@ -9,7 +9,7 @@
   @apply m-1;
 }
 .rsw-dd {
-  @apply scale-75  w-full max-w-xs my-2;
+  @apply select scale-75 select-bordered w-full max-w-xs my-2;
 }
 
 /*

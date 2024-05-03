@@ -63,7 +63,7 @@ export default function Home() {
         <div className="px-5 mt-10">
           <h1 className="mt-5 font font-bold text-2xl">SEMUA</h1>
 
-          <div className="flex flex-wrap items-center justify-center gap-5 mt-10">
+          <div className="flex flex-wrap justify-center gap-5 mt-10">
             {all.map((post: any, index) => {
               return (
                 <div id={`slide${index}`} className="" key={index}>

@@ -51,7 +51,7 @@ export default async function Page({ params }: { params: { username: string } })
                             const desc: String = post.content_description
                             return (
                                 <div key={index} className="card card-compact w-60 bg-base-100 shadow-xl">
-                                    <figure><img src={post.cover_url != null ? post.cover_url : `https://placehold.co/600x300?text=${post.content_title}`.replace(/ /g, "+")} alt="Shoes" /></figure>
+                                    <figure><img src={post.cover_url != null ? post.cover_url : `https://placehold.co/600x300?text=${post.content_title}`.replace(/ /g, "+")} alt="" /></figure>
                                     <div className="card-body">
                                         <h2 className="card-title">{post.content_title}</h2>
                                         <p>{desc.slice(0, 100)}....</p>
