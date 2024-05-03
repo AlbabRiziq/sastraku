@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import homeImg from '../../assets/img/home.svg'
 import createImg from '../../assets/img/create.svg'
+import searchImg from '../../assets/img/search.svg'
 import profileImg from '../../assets/img/profile.svg'
 import Link from 'next/link';
 
@@ -15,18 +16,25 @@ function Navbar() {
             src={homeImg}
           />
         </Link>
+        <Link href="/cari">
+          <Image
+            alt='cari'
+            src={searchImg}
+          />
+        </Link>
         <Link href="/create">
           <Image
-            alt='create'
+            alt='buat'
             src={createImg}
           />
         </Link>
         <Link href="/profile">
           <Image
-            alt='create'
+            alt='profil'
             src={profileImg}
           />
         </Link>
+
       </div>
     </div>
   );
