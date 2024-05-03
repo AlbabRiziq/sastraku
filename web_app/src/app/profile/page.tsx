@@ -58,22 +58,22 @@ function Profile() {
 
         console.log(id_post);
 
-        // const toast_id = toast.loading("TUNGGU SEBENTAR...", { isLoading: true })
+        const toast_id = toast.loading("TUNGGU SEBENTAR...", { isLoading: true })
 
-        // axios({
-        //     method: 'DELETE',
-        //     url: '/api/profile/posts',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     params: {
-        //         id_post: id_post
-        //     }
-        // }).then(res => {
-        //     console.log(res);
-        //     toast.update(toast_id, { render: "Karya berhasil dihapus", type: "success", isLoading: false, autoClose: 3000, onClose: () => { window.location.reload() } });
+        axios({
+            method: 'DELETE',
+            url: '/api/profile/posts',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            params: {
+                id_post: id_post
+            }
+        }).then(res => {
+            console.log(res);
+            toast.update(toast_id, { render: "Karya berhasil dihapus", type: "success", isLoading: false, autoClose: 3000, onClose: () => { window.location.reload() } });
 
-        // })
+        })
     }
 
 
