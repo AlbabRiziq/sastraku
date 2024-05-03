@@ -12,7 +12,7 @@ type CardProps = {
 function Card({ title, author, desc, id, img, user_id }: CardProps) {
 
   return (
-    <div className="card w-96 bg-base-100 shadow-xl bg-transparent border m-5 relative border-[#092635]">
+    <div className="card w-96 bg-base-100 shadow-xl bg-transparent border m-5 relative border-[#092635] rounded-lg">
       <div className="card-body p-7">
         <img src={img != null ? img : `https://placehold.co/600x300?text=${title}`.replace(/ /g, "+")} alt="" className="w-full rounded-2xl h-56 object-cover" />
         <div>

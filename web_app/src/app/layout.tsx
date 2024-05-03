@@ -13,8 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="bg-[#9ec8ba]">
       <body className={montserrat.className}>
-        {children}
-        <Analytics />
+        <main className="overflow-x-hidden">
+          {children}
+        </main>
+        {/* <Analytics /> */}
         <Navbar />
 
       </body>
