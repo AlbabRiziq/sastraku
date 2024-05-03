@@ -55,22 +55,25 @@ function Profile() {
 
     const deletePost = (id_post: String) => {
 
-        const toast_id = toast.loading("TUNGGU SEBENTAR...", { isLoading: true })
 
-        axios({
-            method: 'DELETE',
-            url: '/api/profile/posts',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            params: {
-                id_post: id_post
-            }
-        }).then(res => {
-            console.log(res);
-            toast.update(toast_id, { render: "Karya berhasil dihapus", type: "success", isLoading: false, autoClose: 3000, onClose: () => { window.location.reload() } });
+        console.log(id_post);
 
-        })
+        // const toast_id = toast.loading("TUNGGU SEBENTAR...", { isLoading: true })
+
+        // axios({
+        //     method: 'DELETE',
+        //     url: '/api/profile/posts',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     params: {
+        //         id_post: id_post
+        //     }
+        // }).then(res => {
+        //     console.log(res);
+        //     toast.update(toast_id, { render: "Karya berhasil dihapus", type: "success", isLoading: false, autoClose: 3000, onClose: () => { window.location.reload() } });
+
+        // })
     }
 
 
@@ -107,7 +110,7 @@ function Profile() {
     }
 
     return (
-        <main className="flex items-center justify-center w-screen flex-col ">
+        <main className="flex items-center justify-center w-screen flex-col mb-20">
             <ToastContainer />
             <div className="text-center mt-5">
                 <h1 className="font-bold text-xl">{namaLengkap}</h1>
@@ -116,7 +119,6 @@ function Profile() {
             <div className="mt-5 text-center ">
                 <textarea onChange={e => {
                     setBio(e.target.value)
-
                 }} className="textarea bg-[#9ec8ba] border border-[#092635] text-[#092635] w-48" placeholder="Bio" ></textarea><br />
                 <button onClick={updateBio} type="button" className="btn text-xs bg-[#092635] text-[#9ec8ba] " >UPDATE BIO</button>
             </div>
@@ -131,14 +133,14 @@ function Profile() {
                                 <p>{item.content_description.slice(0, 100)}.....</p>
                                 <div className="flex justify-end">
                                     <Link href={`/preview/${item.content_id}`} className="btn bg-[#092635] text-[#9ec8ba]">LIHAT</Link>
-                                    <label htmlFor="confirmDelete" className="btn bg-[#092635] text-[#9ec8ba]">Hapus</label>
-                                    <input type="checkbox" id="confirmDelete" className="modal-toggle" />
+                                    <label htmlFor={`confirmDelete_${item.content_id}`} className="btn bg-[#092635] text-[#9ec8ba]">Hapus</label>
+                                    <input type="checkbox" id={`confirmDelete_${item.content_id}`} className="modal-toggle" />
                                     <div className="modal" role="dialog">
                                         <div className="modal-box">
                                             <h3 className="font-bold text-lg">APAKAH YAKIN INGIN MENGHAPUS KARYA KAMU?</h3>
                                             <div className="modal-action">
                                                 <button onClick={() => deletePost(item.content_id)} className="btn bg-red-500 text-white" >IYA</button>
-                                                <label htmlFor="confirmDelete" className="btn">BATAL</label>
+                                                <label htmlFor={`confirmDelete_${item.content_id}`} className="btn">BATAL</label>
                                             </div>
                                         </div>
                                     </div>
@@ -146,7 +148,6 @@ function Profile() {
                             </div>
                         ))}
                     </div>
-
                 </div>
             </div>
         </main >
