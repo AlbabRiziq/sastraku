@@ -81,23 +81,25 @@ function Page() {
                     ))} */}
                 </section>
             ) : (
-                <div className="mt-10 flex gap-3">
+                <div className="mt-10 flex gap-3 flex-wrap">
                     {result[0] == undefined || result[0] == "" ? (
                         <div className="text-center w-full">
                             <h1 className="font-bold">KARYA TIDAK DITEMUKAN</h1>
                         </div>
                     ) : (
                         result.map((item, index) => (
-                            <Link href={"/preview/" + item.content_id} className="card card-compact w-60 bg-base-100 shadow-xl">
-                                <figure><img className="w-full h-[200px] object-cover" src={item.cover_url != null ? item.cover_url : `https://placehold.co/300x300?text=${item.content_title}`.replace(/ /g, "+")} alt="Shoes" /></figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">{item.content_title}</h2>
-                                    <p>{item.content_description.slice(0, 100)}....</p>
-                                    <div className="card-actions justify-end">
-                                        <Link className="btn bg-[#092635] text-white" href={"/preview/" + item.content_id}>LIHAT</Link>
+                            <div className="">
+                                <Link href={"/preview/" + item.content_id} className="card card-compact w-60 bg-base-100 shadow-xl">
+                                    <figure><img className="w-full h-[200px] object-cover" src={item.cover_url != null ? item.cover_url : `https://placehold.co/300x300?text=${item.content_title}`.replace(/ /g, "+")} alt="Shoes" /></figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title">{item.content_title}</h2>
+                                        <p>{item.content_description.slice(0, 100)}....</p>
+                                        <div className="card-actions justify-end">
+                                            <Link className="btn bg-[#092635] text-white" href={"/preview/" + item.content_id}>LIHAT</Link>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
+                            </div>
                         ))
 
                     )}
