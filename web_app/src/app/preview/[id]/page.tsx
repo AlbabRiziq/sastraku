@@ -97,7 +97,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <p className="text-sm mt-10 text-justify">{desc}</p>
                 <Link href={"/full/" + params.id}><p className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BACA</p></Link>
                 <button onClick={() => {
-                    document.getElementById('my_modal_1').showModal()
+                    (document.getElementById('my_modal_1') as HTMLDialogElement).showModal()
                 }} className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BAGIKAN</button>
             </div>
             <br /><br /><br /><br />
