@@ -2,24 +2,45 @@
 
 import Link from "next/link";
 import Navbar from "../../../Components/Navbar/Navbar";
-import dbConnect from "../../../lib/dbConnect";
-import Content from "../../../Models/Content";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import type { Metadata, ResolvingMetadata } from 'next'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Copy from "../../../Components/Copy/Copy";
-import { set } from "mongoose";
+
+
+
 
 export default function Page({ params }: { params: { id: string } }) {
+
+
 
     const [data, setData] = useState<any>()
     const [isSalin, setIsSalin] = useState<boolean>(false)
     const [url, setUrl] = useState<string>("")
+    const [comment, setComment] = useState([])
+    const [value, setValue] = useState<string>("")
 
+
+    const getComment = () => {
+        axios({
+            method: "GET",
+            url: "/api/post/comment",
+            params: {
+                content_id: params.id
+            }
+        }).then((res) => {
+            console.log(res.data.data);
+
+            setComment(res.data.data)
+        }).catch((err) => {
+            console.log(err);
+
+
+        })
+    }
 
     useEffect(() => {
+
+
 
         setUrl(window.location.href)
 
@@ -31,13 +52,15 @@ export default function Page({ params }: { params: { id: string } }) {
             }
         }).then((res) => {
 
-            console.log(res);
+            // console.log(res);
 
             setData(res.data.data)
         }).catch((err) => {
             console.log(err);
 
         })
+
+        getComment()
     }, [])
 
 
@@ -50,6 +73,24 @@ export default function Page({ params }: { params: { id: string } }) {
         setIsSalin(true)
     }
 
+    const sendComment = () => {
+        axios({
+            method: "POST",
+            url: "/api/post/comment",
+            params: {
+                content_id: params.id,
+                value: value
+            }
+        }).then((res) => {
+            console.log(res);
+            getComment()
+
+        }).catch((err) => {
+            console.log(err);
+
+        })
+
+    }
 
 
 
@@ -104,22 +145,21 @@ export default function Page({ params }: { params: { id: string } }) {
 
                 <div className="comments">
                     <h1 className="font-bold text-[#092635] text-3xl my-10">Komentar</h1>
-
-                    <div className="flex gap-2 mb-10 items-center ">
-                        <div className=" border p-5 border-[#092635] rounded-xl">
-                            <h1 className="font-bold italic underline">Riziq Lili Ulil Albab</h1>
-                            <p className="text-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus incidunt, voluptatem dolorem facilis nihil eum doloremque modi reprehenderit ex laudantium molestiae pariatur, veritatis eaque, impedit sed? Quasi earum ad sapiente!</p>
-                        </div>
+                    <label className="input mb-10 input-bordered flex items-center gap-2 p-0 pl-6">
+                        <input type="text" className="grow" placeholder="TULIS KOMENTAR" onChange={(e) => setValue(e.target.value)} />
+                        <button className="btn bg-[#092635] text-white hover:bg-gray-700" onClick={sendComment}>
+                            KIRIM</button>
+                    </label>
+                    <div className="flex gap-2 mb-10  flex-col">
+                        {comment.map((item: any, index: number) => (
+                            <div className=" border p-5 border-[#092635] rounded-xl">
+                                <Link href={"/user?user_id=" + item.user_id} className="font-bold italic underline">{item.nama_lengkap}</Link>
+                                <p className="text-sm">{item.value}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
-                <label className="input input-bordered flex items-center gap-2 p-0 pl-6">
-                    <input type="text" className="grow" placeholder="TULIS KOMENTAR" />
-                    <button className="btn bg-[#092635] text-white hover:bg-gray-700" onClick={() => {
-                        // <pathname>?sort=asc
 
-                    }}>
-                        KIRIM</button>
-                </label>
             </div>
             <br /><br /><br /><br />
 

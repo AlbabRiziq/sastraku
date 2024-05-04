@@ -6,6 +6,14 @@ const commentSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
+    content_id: {
+        type: String,
+        required: true,
+    },
+    nama_lengkap: {
+        type: String,
+        required: true,
+    },
     user_id: {
         type: String,
         required: true,
