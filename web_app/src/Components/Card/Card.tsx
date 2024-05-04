@@ -16,7 +16,7 @@ function Card({ title, author, desc, id, img, user_id }: CardProps) {
       <div className="card-body p-7">
         <img src={img != null ? img : `https://placehold.co/600x300?text=${title}`.replace(/ /g, "+")} alt="" className="w-full rounded-2xl h-56 object-cover" />
         <div>
-          <a className="card-title -mb-1">{title}</a>
+          <p className="card-title -mb-1">{title}</p>
           <a className="italic underline" href={"/user?user_id=" + user_id}>{author}</a>
           <p className="text-xs text-justify">{desc.slice(0, 200) + "..."}</p>
           <div className="card-actions justify-end">
