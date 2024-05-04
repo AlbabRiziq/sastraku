@@ -10,12 +10,16 @@ export async function middleware(req: NextRequest) {
             const isValid = KJUR.jws.JWS.verifyJWT(token.value, process.env.NEXT_PUBLIC_SECRET_KEY, { alg: ['HS256'] });
 
             if (!isValid) {
-                return NextResponse.redirect(new URL("/login", req.url))
+                return NextResponse.json({ message: "Token is not valid" }, {
+                    status: 400
+                })
             } else {
                 return NextResponse.next()
             }
         } else {
-            return NextResponse.redirect(new URL("/login", req.url))
+            return NextResponse.json({ message: "Token is not valid" }, {
+                status: 400
+            })
         }
     }
 

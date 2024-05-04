@@ -5,6 +5,8 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Copy from "../../../Components/Copy/Copy";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -88,6 +90,15 @@ export default function Page({ params }: { params: { id: string } }) {
         }).catch((err) => {
             console.log(err);
 
+            if (err.response.status == 400) {
+                toast.error("Anda harus login terlebih dahulu", {
+                    autoClose: 3000,
+                    onClose: () => {
+                        window.location.href = "/login"
+                    }
+                })
+            }
+
         })
 
     }
@@ -114,6 +125,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
     return (
         <div className="bg-[#9ec8ba] w-screen">
+            <ToastContainer />
 
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
