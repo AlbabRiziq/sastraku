@@ -99,8 +99,30 @@ export default function Page({ params }: { params: { id: string } }) {
                 <button onClick={() => {
                     (document.getElementById('my_modal_1') as HTMLDialogElement).showModal()
                 }} className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BAGIKAN</button>
+
+
+
+                <div className="comments">
+                    <h1 className="font-bold text-[#092635] text-3xl my-10">Komentar</h1>
+
+                    <div className="flex gap-2 mb-10 items-center ">
+                        <div className=" border p-5 border-[#092635] rounded-xl">
+                            <h1 className="font-bold italic underline">Riziq Lili Ulil Albab</h1>
+                            <p className="text-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus incidunt, voluptatem dolorem facilis nihil eum doloremque modi reprehenderit ex laudantium molestiae pariatur, veritatis eaque, impedit sed? Quasi earum ad sapiente!</p>
+                        </div>
+                    </div>
+                </div>
+                <label className="input input-bordered flex items-center gap-2 p-0 pl-6">
+                    <input type="text" className="grow" placeholder="TULIS KOMENTAR" />
+                    <button className="btn bg-[#092635] text-white hover:bg-gray-700" onClick={() => {
+                        // <pathname>?sort=asc
+
+                    }}>
+                        KIRIM</button>
+                </label>
             </div>
             <br /><br /><br /><br />
+
 
             <Navbar />
         </div >
