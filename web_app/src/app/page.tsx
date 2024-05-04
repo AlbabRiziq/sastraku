@@ -61,7 +61,7 @@ export default function Home() {
         </div>
 
         <div className="px-5 mt-10">
-          <h1 className="mt-5 font font-bold text-2xl">SEMUA</h1>
+          <h1 className="mt-5 font font-bold text-2xl">LAINNYA</h1>
 
           <div className="flex flex-wrap justify-center gap-5 mt-10">
             {all.map((post: any, index) => {

@@ -105,7 +105,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         }
     } else {
         try {
-            const post = await Content.find({})
+            const post = await Content.aggregate().sample(20)
             return NextResponse.json({ message: "Success", data: post })
         } catch (err) {
             return NextResponse.json({ message: "Konten tidak ditemukan" }, {
