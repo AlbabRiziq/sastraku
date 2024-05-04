@@ -17,53 +17,64 @@ function SignUp() {
 
   const handleSignUp = () => {
 
-    const toastID = toast.loading("Tunggu sebentar....", {
 
-    });
 
     if (!validator.isEmail(email)) {
       toast.error("Email tidak valid");
       return;
     } {
-      if (pass == confirmPass) {
-        axios({
-          url: "/api/signup",
-          method: "POST",
-          params: {
-            username: username,
-            password: pass,
-            nama_lengkap: namaLengkap,
-            email: email,
-          },
-        })
-          .then((res) => {
-            toast.update(toastID, {
-              render: "Username berhasil ditambahkan, silahkan login ulang",
-              type: "success",
-              autoClose: 1000,
-              isLoading: false,
-              onClose: () => {
-                location.href = "/login";
-              },
-            });
-          })
-          .catch((err) => {
-            toast.update(toastID, {
-              render: err.response.data.message,
-              isLoading: false,
-              type: "error",
-              autoClose: 3000,
-            });
-            // console.log();
-          });
-        // console.log(process.env.);
+      if (pass.length < 8) {
+        toast.error("Password minimal 8 karakter");
+        return;
       } else {
-        toast.update(toastID, {
-          render: "Password tidak sama",
-          isLoading: false,
-          type: "error",
-          autoClose: 3000,
-        })
+        if (pass == confirmPass) {
+          const toastID = toast.loading("Tunggu sebentar....", {
+            isLoading: true,
+          });
+
+          axios({
+            url: "/api/signup",
+            method: "POST",
+            params: {
+              username: username,
+              password: pass,
+              nama_lengkap: namaLengkap,
+              email: email,
+            },
+          })
+            .then((res) => {
+              toast.update(toastID, {
+                render: "Username berhasil ditambahkan, silahkan login ulang",
+                type: "success",
+                autoClose: 1000,
+                isLoading: false,
+                onClose: () => {
+                  location.href = "/login";
+                },
+              });
+            })
+            .catch((err) => {
+              toast.update(toastID, {
+                render: err.response.data.message,
+                isLoading: false,
+                type: "error",
+                autoClose: 3000,
+              });
+              // console.log();
+            });
+          // console.log(process.env.);
+        } else {
+          const toastID = toast.loading("Tunggu sebentar....", {
+            isLoading: true,
+          });
+
+          toast.update(toastID, {
+            render: "Password tidak sama",
+            isLoading: false,
+            type: "error",
+            autoClose: 3000,
+          })
+        }
       }
     }
   };
