@@ -32,7 +32,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     return (
         <div className="pb-24">
-            <div className="text-center">
+            <div className="text-center p-10 max-w-4xl m-auto">
                 <h1 className="mt-5 text-[#092635] font-bold text-lg">{title.toUpperCase()}</h1>
                 <h3 className="italic mb-10">{author.toLocaleUpperCase()}</h3>
                 <div className={montserrat.className}>

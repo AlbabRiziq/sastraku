@@ -12,29 +12,17 @@ import axios from "axios";
 import Copy from "../../../Components/Copy/Copy";
 import { set } from "mongoose";
 
-
-
-// async function getData(id: string) {
-//     dbConnect()
-
-//     const res = await Content.findOne({ content_id: id })
-
-//     // console.log(res);
-
-//     return res
-
-// }
-
-
-
-
-
 export default function Page({ params }: { params: { id: string } }) {
 
-
     const [data, setData] = useState<any>()
+    const [isSalin, setIsSalin] = useState<boolean>(false)
+    const [url, setUrl] = useState<string>("")
+
 
     useEffect(() => {
+
+        setUrl(window.location.href)
+
         axios({
             method: "GET",
             url: "/api/post",
@@ -58,7 +46,8 @@ export default function Page({ params }: { params: { id: string } }) {
     // }
 
     const salin = () => {
-        navigator.clipboard.writeText(`${location.href}`)
+        navigator.clipboard.writeText(url)
+        setIsSalin(true)
     }
 
 
@@ -85,14 +74,31 @@ export default function Page({ params }: { params: { id: string } }) {
     return (
         <div className="bg-[#9ec8ba] w-screen">
 
-            <div className="p-5">
+            <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">SALIN URL UNTUK DIBAGIKAN</h3>
+                    <p className="py-4 border p-4 border-[#051720] rounded-2xl">{url}</p>
+                    <div className="modal-action">
+                        {isSalin ? <div className="text-sm btn  btn-disabled bg-green-500 text-[#051720]">Berhasil disalin</div> : <button onClick={salin} className="btn bg-[#051720] text-white mx-5">SALIN</button>
+                        }
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn">KELUAR</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+
+            <div className="p-10 max-w-4xl m-auto">
                 <h1 className="font-bold text-[#092635] text-3xl">{title.toUpperCase()}</h1>
                 <a className="italic text-sm underline" href={"/user?user_id=" + userId} >{author.toUpperCase()}</a>
                 <img src={coverImg || `https://placehold.co/600x250?text=${title}`.replace(/ /g, "+")} alt="coverImage" className="w-full h-[300px] mt-5 rounded-lg object-cover" />
                 {/* <img src={coverImg} alt="coverImage" className="w-full mt-5 rounded-lg" /> */}
                 <p className="text-sm mt-10 text-justify">{desc}</p>
                 <Link href={"/full/" + params.id}><p className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BACA</p></Link>
-                <button onClick={salin} className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BAGIKAN</button>
+                <button onClick={() => {
+                    document.getElementById('my_modal_1').showModal()
+                }} className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BAGIKAN</button>
             </div>
             <br /><br /><br /><br />
 
