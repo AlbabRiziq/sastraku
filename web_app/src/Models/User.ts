@@ -31,6 +31,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  role: {
+    type: String,
+    required: true,
+    default: "user",
+
+  }
 }).pre("save", function (next) {
   const userId = Randomstring.generate(10);
 
