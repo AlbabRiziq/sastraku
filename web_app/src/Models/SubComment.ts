@@ -4,11 +4,13 @@ import Randomstring from "randomstring";
 const subComment = new mongoose.Schema({
     sub_id: {
         type: String,
-        required: true,
     },
     comment_id: {
         type: String,
-        unique: true,
+    },
+    nama_lengkap: {
+        type: String,
+        required: true,
     },
     user_id: {
         type: String,
@@ -24,7 +26,7 @@ const subComment = new mongoose.Schema({
     next();
 });
 
-const Comment =
+const SubComment =
     mongoose.models["SubComment"] || mongoose.model("SubComment", subComment);
 
-export default Comment;
+export default SubComment;

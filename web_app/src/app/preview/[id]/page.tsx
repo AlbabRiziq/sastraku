@@ -28,6 +28,8 @@ export default function Page({ params }: { params: { id: string } }) {
     const [desc, setDesc] = useState<string>("");
     const [coverImg, setCoverImg] = useState<string>("");
     const [userId, setUserID] = useState<string>("");
+    const [valueBalas, setValueBalas] = useState<string>("")
+    const [balasan, setBalasan] = useState<any>({})
 
 
     const getComment = () => {
@@ -38,11 +40,9 @@ export default function Page({ params }: { params: { id: string } }) {
                 content_id: params.id
             }
         }).then((res) => {
-            console.log(res.data.data);
 
             setComment(res.data.data)
         }).catch((err) => {
-            console.log(err);
 
 
         })
@@ -59,7 +59,6 @@ export default function Page({ params }: { params: { id: string } }) {
         }).then((res) => {
             setData(res.data.data)
         }).catch((err) => {
-            console.log(err);
         })
         getComment()
     }, [])
@@ -83,11 +82,9 @@ export default function Page({ params }: { params: { id: string } }) {
                 value: value
             }
         }).then((res) => {
-            console.log(res);
             getComment()
 
         }).catch((err) => {
-            console.log(err);
 
             if (err.response.status == 400) {
                 toast.error("Anda harus login terlebih dahulu", {
@@ -112,12 +109,10 @@ export default function Page({ params }: { params: { id: string } }) {
                 reason: reportReason
             }
         }).then((res) => {
-            console.log(res);
             toast.success("Konten berhasil dilaporkan", {
                 autoClose: 3000
             })
         }).catch((err) => {
-            console.log(err);
 
             if (err.response.status == 400) {
                 toast.error("Anda harus login terlebih dahulu", {
@@ -131,7 +126,29 @@ export default function Page({ params }: { params: { id: string } }) {
         })
     }
 
+    const balas = (comment_id: string) => {
+        axios({
+            url: "/api/post/comment/reply",
+            method: "POST",
+            params: {
+                value: valueBalas,
+                comment_id: comment_id
+            }
+        }).then((res) => {
+            window.location.reload()
+        }).catch((err) => {
 
+            if (err.response.status == 400) {
+                toast.error("Anda harus login terlebih dahulu", {
+                    autoClose: 3000,
+                    onClose: () => {
+                        window.location.href = "/login"
+                    }
+                })
+            }
+        })
+
+    }
 
 
     useEffect(() => {
@@ -144,6 +161,24 @@ export default function Page({ params }: { params: { id: string } }) {
         }
     }, [data]);
 
+
+    const getBalasan = (comment_id: string) => {
+
+
+        axios({
+            method: "GET",
+            url: "/api/post/comment/reply",
+            params: {
+                comment_id: comment_id
+            }
+        }).then((res) => {
+
+            setBalasan({ ...balasan, [comment_id]: res.data.data })
+        }).catch((err) => {
+
+        })
+        // return []
+    }
 
 
     return (
@@ -192,9 +227,7 @@ export default function Page({ params }: { params: { id: string } }) {
                         (document.getElementById('report') as HTMLDialogElement).showModal()
                     }} className="btn text-xs  bg-[#092635] text-[#9ec8ba] mt-5">LAPORKAN <AlertTriangle color="red" /></button>
 
-
                 </div>
-
 
                 <div className="comments">
                     <h1 className="font-bold text-[#092635] text-3xl my-10">Komentar</h1>
@@ -205,9 +238,44 @@ export default function Page({ params }: { params: { id: string } }) {
                     </label>
                     <div className="flex gap-2 mb-10  flex-col">
                         {comment.map((item: any, index: number) => (
-                            <div className=" border p-5 border-[#092635] rounded-xl">
-                                <Link href={"/user?user_id=" + item.user_id} className="font-bold italic underline">{item.nama_lengkap}</Link>
-                                <p className="text-sm">{item.value}</p>
+
+                            <div className="my-3">
+                                <div className="border p-5 border-[#092635] rounded-xl">
+                                    <Link href={"/user?user_id=" + item.user_id} className="font-bold italic underline">{item.nama_lengkap}</Link>
+                                    <p className="text-sm">{item.value}</p>
+                                    <div className="flex gap-3 mt-3">
+                                        <button className="text-xs text-[#092635] font-bold" onClick={() => {
+                                            (document.getElementById(`balas_${item.comment_id}`) as HTMLDialogElement).classList.toggle("hidden")
+                                        }}>BALAS</button>
+                                        <button className="text-xs text-[#092635] font-bold" onClick={() => {
+
+                                            (document.getElementById(`${item.comment_id}`) as HTMLDialogElement).classList.toggle("hidden")
+                                            getBalasan(item.comment_id)
+                                        }}>LIHAT BALASAN</button>
+                                    </div>
+                                </div>
+                                <div className="balas hidden" id={`${item.comment_id}`}>
+
+                                    {
+                                        balasan[item.comment_id]?.map((item: any) => (
+                                            <div className="ml-10 border p-5 border-[#092635] rounded-xl mt-5">
+                                                <Link href={"/user?user_id=" + item.user_id} className="font-bold italic underline">{item.nama_lengkap}</Link>
+                                                <p className="text-sm">{item.value}</p>
+                                            </div>
+                                        ))
+
+                                    }
+
+
+                                </div>
+
+                                <label id={`balas_${item.comment_id}`} className="input mb-10 input-bordered flex items-center gap-2 p-0 pl-6 hidden mt-5">
+                                    <input type="text" className="grow" placeholder="BALAS KOMENTAR" onChange={(e) => setValueBalas(e.target.value)} />
+                                    <button className="btn bg-[#092635] text-white hover:bg-gray-700" onClick={() => {
+                                        balas(item.comment_id)
+                                    }}>
+                                        KIRIM</button>
+                                </label>
                             </div>
                         ))}
                     </div>
