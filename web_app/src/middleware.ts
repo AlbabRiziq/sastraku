@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { KJUR } from 'jsrsasign';
+import User from './Models/User';
 
 
 export async function middleware(req: NextRequest) {
@@ -22,6 +23,8 @@ export async function middleware(req: NextRequest) {
             })
         }
     }
+
+
 
     if (req.nextUrl.pathname.startsWith('/login') || req.nextUrl.pathname.startsWith('/signup')) {
         if (req.cookies.get('tkn')) {

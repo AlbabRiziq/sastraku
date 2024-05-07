@@ -7,6 +7,7 @@ import axios from "axios";
 import Copy from "../../../Components/Copy/Copy";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AlertCircle, AlertCircleIcon, AlertTriangle } from "lucide-react";
 
 
 
@@ -20,6 +21,13 @@ export default function Page({ params }: { params: { id: string } }) {
     const [url, setUrl] = useState<string>("")
     const [comment, setComment] = useState([])
     const [value, setValue] = useState<string>("")
+    const [reportReason, setReportReason] = useState<string>("")
+
+    const [title, setTitle] = useState<string>("");
+    const [author, setAuthor] = useState<string>("");
+    const [desc, setDesc] = useState<string>("");
+    const [coverImg, setCoverImg] = useState<string>("");
+    const [userId, setUserID] = useState<string>("");
 
 
     const getComment = () => {
@@ -41,11 +49,7 @@ export default function Page({ params }: { params: { id: string } }) {
     }
 
     useEffect(() => {
-
-
-
         setUrl(window.location.href)
-
         axios({
             method: "GET",
             url: "/api/post",
@@ -53,18 +57,12 @@ export default function Page({ params }: { params: { id: string } }) {
                 id_post: params.id
             }
         }).then((res) => {
-
-            // console.log(res);
-
             setData(res.data.data)
         }).catch((err) => {
             console.log(err);
-
         })
-
         getComment()
     }, [])
-
 
     // if (!data) {
     //     return notFound()
@@ -80,6 +78,7 @@ export default function Page({ params }: { params: { id: string } }) {
             method: "POST",
             url: "/api/post/comment",
             params: {
+                title: title,
                 content_id: params.id,
                 value: value
             }
@@ -103,13 +102,37 @@ export default function Page({ params }: { params: { id: string } }) {
 
     }
 
+    const lapor = () => {
+        axios({
+            method: "POST",
+            url: "/api/post/report",
+            params: {
+                title: title,
+                post_id: params.id,
+                reason: reportReason
+            }
+        }).then((res) => {
+            console.log(res);
+            toast.success("Konten berhasil dilaporkan", {
+                autoClose: 3000
+            })
+        }).catch((err) => {
+            console.log(err);
+
+            if (err.response.status == 400) {
+                toast.error("Anda harus login terlebih dahulu", {
+                    autoClose: 3000,
+                    onClose: () => {
+                        window.location.href = "/login"
+                    }
+                })
+            }
+
+        })
+    }
 
 
-    const [title, setTitle] = useState<string>("");
-    const [author, setAuthor] = useState<string>("");
-    const [desc, setDesc] = useState<string>("");
-    const [coverImg, setCoverImg] = useState<string>("");
-    const [userId, setUserID] = useState<string>("");
+
 
     useEffect(() => {
         if (data) {
@@ -126,7 +149,6 @@ export default function Page({ params }: { params: { id: string } }) {
     return (
         <div className="bg-[#9ec8ba] w-screen">
             <ToastContainer />
-
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">SALIN URL UNTUK DIBAGIKAN</h3>
@@ -141,6 +163,19 @@ export default function Page({ params }: { params: { id: string } }) {
                     </div>
                 </div>
             </dialog>
+            <dialog id="report" className="modal">
+                <div className="modal-box ">
+                    <h3 className="font-bold text-lg">LAPORKAN KONTEN</h3>
+                    <input type="text" onChange={e => setReportReason(e.target.value)} placeholder="ALASAN" className="input input-bordered w-full max-w-xs" />
+                    <div className="modal-action">
+                        <button onClick={lapor} className="btn bg-[#051720] text-white mx-5">KIRIM</button>
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn">KELUAR</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
 
             <div className="p-10 max-w-4xl m-auto">
                 <h1 className="font-bold text-[#092635] text-3xl">{title.toUpperCase()}</h1>
@@ -148,11 +183,17 @@ export default function Page({ params }: { params: { id: string } }) {
                 <img src={coverImg || `https://placehold.co/600x250?text=${title}`.replace(/ /g, "+")} alt="coverImage" className="w-full h-[300px] mt-5 rounded-lg object-cover" />
                 {/* <img src={coverImg} alt="coverImage" className="w-full mt-5 rounded-lg" /> */}
                 <p className="text-sm mt-10 text-justify">{desc}</p>
-                <Link href={"/full/" + params.id}><p className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BACA</p></Link>
-                <button onClick={() => {
-                    (document.getElementById('my_modal_1') as HTMLDialogElement).showModal()
-                }} className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BAGIKAN</button>
+                <div className="flex flex-wrap  items-center w-full">
+                    <Link href={"/full/" + params.id}><p className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BACA</p></Link>
+                    <button onClick={() => {
+                        (document.getElementById('my_modal_1') as HTMLDialogElement).showModal()
+                    }} className="btn text-xs px-12 bg-[#092635] text-[#9ec8ba] mt-5">BAGIKAN</button>
+                    <button onClick={() => {
+                        (document.getElementById('report') as HTMLDialogElement).showModal()
+                    }} className="btn text-xs  bg-[#092635] text-[#9ec8ba] mt-5">LAPORKAN <AlertTriangle color="red" /></button>
 
+
+                </div>
 
 
                 <div className="comments">
