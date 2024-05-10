@@ -20,6 +20,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="id" className="bg-[#9ec8ba]">
+      <head>
+        <meta name="google-site-verification" content="d6JPP508KAFgwWE1kXAy5gLnqKeZ_wtHzgKxlIyGdPM" />
+      </head>
       <body className={montserrat.className}>
         <main className="overflow-x-hidden">
           {children}
