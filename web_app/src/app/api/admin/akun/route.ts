@@ -11,9 +11,6 @@ export async function GET(req: NextRequest) {
     try {
         const total_user = await User.find({})
 
-        console.log(total_user);
-
-
         return NextResponse.json({
             status: 200,
             body: {
