@@ -1,23 +1,9 @@
 # SASTRAKU
 
-## APLIKASI SEDANG TAHAP PENGEMBANGAN
-
 <center>
 <img src="./logo.png" height=300></center>
 Sastraku adalah aplikasi dimana pengguna dapat saling berbagi karya sastra seperti puisi, pantun, dan karya sastra lainnya.
 
-## Tech Stack
-
-Berikut adalah teknologi yang digunakan dalam pengembangan aplikasi ini:
-
-### Frontend
-
-- **Next.js**
-- **Tailwind CSS**
-
-### Backend
-
-- **MONGO DB**
 
 ## Kontributor
 
