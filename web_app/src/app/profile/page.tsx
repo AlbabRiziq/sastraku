@@ -42,13 +42,25 @@ function Profile() {
 
         }).catch((error) => {
         })
+
+
+        axios({
+            method: 'GET',
+            url: '/api/profile/bio',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            setBio(response.data.bio)
+            console.log(response.data);
+
+        }).catch((error) => {
+
+        })
+
+
     }, [])
 
-
-    useEffect(() => {
-        console.log(karya);
-
-    }, [karya])
 
 
 
@@ -117,7 +129,7 @@ function Profile() {
                 <h3 className="italic">@{username}</h3>
             </div>
             <div className="mt-5 text-center ">
-                <textarea onChange={e => {
+                <textarea value={`${bio}`} onChange={e => {
                     setBio(e.target.value)
                 }} className="textarea bg-[#9ec8ba] border border-[#092635] text-[#092635] w-48" placeholder="Bio" ></textarea><br />
                 <button onClick={updateBio} type="button" className="btn text-xs bg-[#092635] text-[#9ec8ba] " >UPDATE BIO</button>

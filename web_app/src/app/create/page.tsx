@@ -88,98 +88,100 @@ function Post() {
 
   }
 
-
   return (
-    <div className="w-screen p-5 flex flex-col ">
+    <div className="p-5 flex items-center justify-center">
       <ToastContainer />
-      <h1 className="font-bold text-2xl">BUAT KARYA</h1>
-      <form className="mt-5 overflow-x-hidden" encType="multipart/form">
-        <label htmlFor="title">MASUKAN JUDUL KARYA</label>
-        <br />
-        <input
-          type="text"
-          placeholder="Type here"
-          name="content_title"
-          onChange={(e) => setTitle(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <br />
-        <label htmlFor="title">MASUKAN SAMPUL GAMBAR (opsional)</label>
-        <br />
-        <input type="file" name="file" onChange={e => handleFile(e.target.files)} className="file-input file-input-bordered w-full max-w-xs" />
-        <br />
-        <label htmlFor="kategori">MASUKAN KATEGORI</label>
-        <br />
-        <select
-          name="category_id"
-          className="select select-bordered w-full max-w-xs"
-          onChange={(e) => setKategori(e.target.value)}
-        >
-          <option>
-            Pilih Kategori
-          </option>
-          {dataKategori.map((item, index) => (
-            <option key={index} value={item.category_id}>
-              {item.category_name}
-            </option>
-          ))}
-        </select>
-        <br />
-        <br />
-        <label>MASUKAN TEMA</label>
-        <br />
-        <select
-          name="sub_category_id"
-          onChange={(e) => setTema(e.target.value)}
-          className="select select-bordered w-full max-w-xs"
-        >
-          <option>
-            Pilih Tema
-          </option>
-          {dataTema.map((item, index) => (
-            <option key={index} value={item.sub_category_id}>
-              {item.sub_category_name}
-            </option>
-          ))}
-        </select>
-        <br />
-        <br />
-        <label htmlFor="kategori">DESKRIPSI SINGKAT (SINOPSIS)</label>
-        <br />
-        <textarea
-          name="content_description"
-          className="textarea textarea-bordered w-full max-w-xs"
-          placeholder="Bio"
-          onChange={(e) => setDesc(e.target.value)}
-        ></textarea>
-        <br />
-      </form>
-      <div className="mt-10">
-        <EditorProvider>
-          <Editor
-            containerProps={{}}
-            className="bg-gray-500 bg"
-            value={isi}
-            name="value"
-            onChange={(e) => {
-              setIisi(e.target.value);
-            }}
+      <div className="w-full max-w-2xl">
+        <h1 className="font-bold text-2xl">BUAT KARYA</h1>
+        <form className="mt-5 overflow-x-hidden" encType="multipart/form">
+          <label htmlFor="title">MASUKAN JUDUL KARYA</label>
+          <br />
+          <input
+            type="text"
+            placeholder="Type here"
+            name="content_title"
+            onChange={(e) => setTitle(e.target.value)}
+            className="input input-bordered w-full"
+          />
+          <br />
+          <label htmlFor="title">MASUKAN SAMPUL GAMBAR (opsional)</label>
+          <br />
+          <input type="file" name="file" onChange={e => handleFile(e.target.files)} className="file-input file-input-bordered w-full" />
+          <br />
+          <label htmlFor="kategori">MASUKAN KATEGORI</label>
+          <br />
+          <select
+            name="category_id"
+            className="select select-bordered w-full"
+            onChange={(e) => setKategori(e.target.value)}
           >
-            <Toolbar>
-              <BtnUndo />
-              <BtnRedo />
-              <BtnItalic />
-              <BtnBold />
-              <BtnClearFormatting />
-              <BtnStyles />
-              <button className="btn bg-[#092635] text-white" onClick={paste}>TEMPEL SALINAN</button>
-            </Toolbar>
-          </Editor>
-        </EditorProvider>
+            <option>
+              Pilih Kategori
+            </option>
+            {dataKategori.map((item, index) => (
+              <option key={index} value={item.category_id}>
+                {item.category_name}
+              </option>
+            ))}
+          </select>
+          <br />
+          <br />
+          <label>MASUKAN TEMA</label>
+          <br />
+          <select
+            name="sub_category_id"
+            onChange={(e) => setTema(e.target.value)}
+            className="select select-bordered w-full"
+          >
+            <option>
+              Pilih Tema
+            </option>
+            {dataTema.map((item, index) => (
+              <option key={index} value={item.sub_category_id}>
+                {item.sub_category_name}
+              </option>
+            ))}
+          </select>
+          <br />
+          <br />
+          <label htmlFor="kategori">DESKRIPSI SINGKAT (SINOPSIS)</label>
+          <br />
+          <textarea
+            name="content_description"
+            className="textarea textarea-bordered w-full"
+            placeholder="Bio"
+            onChange={(e) => setDesc(e.target.value)}
+          ></textarea>
+          <br />
+        </form>
+        <h2></h2>
+        <div className="mt-5">
+          <EditorProvider>
+            <h1>TULIS KARYAMU</h1>
+            <Editor
+              containerProps={{}}
+              className="bg-gray-500 w-full"
+              value={isi}
+              name="value"
+              onChange={(e) => {
+                setIisi(e.target.value);
+              }}
+            >
+              <Toolbar>
+                <BtnUndo />
+                <BtnRedo />
+                <BtnItalic />
+                <BtnBold />
+                <BtnClearFormatting />
+                <button className="btn bg-[#092635] text-white" onClick={paste}>TEMPEL SALINAN</button>
+              </Toolbar>
+            </Editor>
+          </EditorProvider>
+        </div>
+        <button className="btn mt-5" onClick={handlePost}>
+          SELESAI
+        </button>
       </div>
-      <button className="btn mt-5" onClick={handlePost}>
-        SELESAI
-      </button>
       <br />
       <br />
       <br />

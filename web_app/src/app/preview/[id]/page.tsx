@@ -174,6 +174,8 @@ export default function Page({ params }: { params: { id: string } }) {
         }).then((res) => {
 
             setBalasan({ ...balasan, [comment_id]: res.data.data })
+
+
         }).catch((err) => {
 
         })
