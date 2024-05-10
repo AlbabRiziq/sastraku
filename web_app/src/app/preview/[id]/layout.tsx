@@ -14,15 +14,7 @@ async function getData(id: string) {
 }
 
 
-export const metadata: Metadata = {
-    title: "SASTRAKU | CARI KARYA",
-    description: "Platform berbagi karya sastra",
-    openGraph: {
-        images: "../assets/img/logo.png",
-    },
 
-    keywords: ["sastra", "karya", "platform", "sastra", "sastraku", "karya sastra", "puisi", "contoh puisi", "cerpen", "contoh cerpen", "novel", "contoh novel", "kumpulan puisi", "kumpulan cerpen", "kumpulan novel", "kumpulan karya sastra", "karya sastra terbaik", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya sastra terfavorit", "karya sastra terkreatif", "karya sastra terinspiratif", "karya sastra terkeren", "karya sastra terhebat", "karya sastra terbaru", "karya sastra terpopuler", "karya sastra terlengkap", "karya sastra terindah", "karya sastra terunik", "karya sastra terbagus", "karya"],
-};
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
 
@@ -44,7 +36,10 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
         description: desc.slice(0, 20),
         openGraph: {
             images: coverImg,
+            title: title,
+            description: desc.slice(0, 20),
         },
+        keywords: "sastra, puisi, cerpen, novel, sastraku, karya,"
     }
 
 }
