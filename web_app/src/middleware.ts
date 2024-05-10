@@ -1,6 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { KJUR } from 'jsrsasign';
-import User from './Models/User';
 
 
 export async function middleware(req: NextRequest) {
@@ -68,4 +67,9 @@ export async function middleware(req: NextRequest) {
             return NextResponse.redirect(new URL("/login", req.url))
         }
     }
+
+    if (req.nextUrl.pathname.startsWith('/admin') && req.method === 'GET') {
+
+    }
 }
+

@@ -52,7 +52,6 @@ function Profile() {
             }
         }).then((response) => {
             setBio(response.data.bio)
-            console.log(response.data);
 
         }).catch((error) => {
 
@@ -82,7 +81,6 @@ function Profile() {
                 id_post: id_post
             }
         }).then(res => {
-            console.log(res);
             toast.update(toast_id, { render: "Karya berhasil dihapus", type: "success", isLoading: false, autoClose: 3000, onClose: () => { window.location.reload() } });
 
         })
